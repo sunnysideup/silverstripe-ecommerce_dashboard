@@ -1,0 +1,16 @@
+---
+Name: ecommerce_dashboard
+After: 'framework/*','cms/*', 'dashboard/*'
+---
+LeftAndMain:
+  extra_requirements_css:
+   - 'ecommerce_dashboard/css/ecommercedashboard.css'
+
+---
+Only:
+  moduleexists: 'grouped-cms-menu'
+---
+LeftAndMain:
+  menu_groups:
+    Shop:
+      - EcommerceDashboard

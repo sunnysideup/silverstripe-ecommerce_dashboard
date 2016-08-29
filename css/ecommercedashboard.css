@@ -1,0 +1,35 @@
+.dashboard-panel-content dl {
+}
+
+.dashboard-panel-content dt, .dashboard-panel-content dd {
+  width: 46%;
+  margin-top: 1.3em;
+  border-bottom: 1px solid #FFCCBC;
+}
+
+.dashboard-panel-content dt {
+  font-weight: bold;
+  float: left;
+  clear: left;
+}
+
+.dashboard-panel-content dd {
+  color: #DD2C00;
+  padding-left: 10px;
+  float: right;
+  text-align: right;
+  clear: right;
+}
+
+
+.EcommerceDashboardPanel_SearchHistory h3 {font-size: 12px; font-weight: normal;}
+
+.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 5px;}
+.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important;}
+
+
+.EcommerceDashboardPanel_OrderStep .dashboard-panel-content em {display: none; clear: both;}
+.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li:hover em {display: block;}
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content ul li {padding: 5px; border: 0px solid transparent; border-bottom: 1px solid green;}
+.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li strong {display: block; float:left;}
+.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li span {display: block; float: right}

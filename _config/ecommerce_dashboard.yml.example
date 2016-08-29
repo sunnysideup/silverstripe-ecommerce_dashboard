@@ -1,0 +1,4 @@
+Dashboard
+  excluded_panels:
+    - DashboardBlogEntryPanel
+    - DashboardGoogleAnalyticsPanel 
