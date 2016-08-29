@@ -51,7 +51,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
                     list($className, $id) = explode('.', $key);
                     $buyable = $className::get()->byID($id);
                     if($buyable) {
-                        $html .= '<li class="pos'.$i.'">'.$count.' × <a href="'.$buyable->Link().'">'.$buyable->FullName.'</a></li>';
+                        $html .= '<li class="pos'.$i.'"><span><strong>'.$count.'</strong> × </span><a href="'.$buyable->Link().'">'.$buyable->FullName.'</a></li>';
                     } else {
                         $html .= '<li class="pos'.$i.'">Error with '.$key.'</li>';
                     }

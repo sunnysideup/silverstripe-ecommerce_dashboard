@@ -45,7 +45,7 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
         $html = '
             <dl>';
         $html .= '
-                <dt>Count of orders:</dt>
+                <dt>Count of orders</dt>
                 <dd>'.$count.'</dd>';
         if($count < $this->maxOrdersForLoop() && $count > 0) {
             foreach($submittedOrders as $order) {
@@ -54,19 +54,19 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
             }
             $sumDBField = DBField::create_field('Currency', $sum);
             $html .= '
-                    <dt>Sum of sub-totals:</dt>
+                    <dt>Sum of sub-totals</dt>
                     <dd>'.$sumDBField->Nice().'</dd>';
             $averagePerOrder =  ($sum / $count);
             $averagePerOrderDBField = DBField::create_field('Currency', $averagePerOrder);
             $html .= '
-                    <dt>Average sub-total per order:</dt>
+                    <dt>Average sub-total per order</dt>
                     <dd>'.$averagePerOrderDBField->Nice().'</dd>';
             $html .= '
-                    <dt>Total count of items sold:</dt>
+                    <dt>Total count of items sold</dt>
                     <dd>'.$itemCount.'</dd>';
             $itemCountPerOrder = round($itemCount / $count, 3);
             $html .= '
-                    <dt>Average items sold per order:</dt>
+                    <dt>Average items sold per order</dt>
                     <dd>'.$itemCountPerOrder.'</dd>';
             $costPerItem = $sum / $itemCount;
             $costPerItemDBField = DBField::create_field('Currency', $costPerItem);

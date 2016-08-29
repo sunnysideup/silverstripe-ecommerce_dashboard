@@ -82,13 +82,22 @@
 
 .EcommerceDashboardPanel_SearchHistory h3 {font-size: 12px; font-weight: normal;}
 
+<<<<<<< HEAD
+.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 5px;}
+.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important;}
+=======
 .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 10px; clear: left;}
 .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span {float: left; display: block; width: 3em;}
 .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important; margin-left: 3.5em; display: block; }
+>>>>>>> 6b9a56a178891072eb389da0a1e8055bea0babb5
 
 
 .EcommerceDashboardPanel_OrderStep .dashboard-panel-content em {display: none; clear: both;}
 .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li:hover em {display: block;}
+<<<<<<< HEAD
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content ul li {padding: 5px; border: 0px solid transparent; border-bottom: 1px solid green;}
+=======
 .cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content ul li {padding: 10px; border: 0px solid transparent; border-bottom: 1px solid green;}
+>>>>>>> 6b9a56a178891072eb389da0a1e8055bea0babb5
 .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li strong {display: block; float:left;}
 .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li span {display: block; float: right}
