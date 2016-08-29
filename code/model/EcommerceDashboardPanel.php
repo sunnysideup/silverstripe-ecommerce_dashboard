@@ -172,6 +172,7 @@ class EcommerceDashboardPanel extends DashboardPanel
         return 500;
     }
 
+
     /**
      * Allows the panel to be added
      *
