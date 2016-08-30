@@ -33,7 +33,7 @@ class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
             }
         }
         if($done === false) {
-            $html .= '<li>All orders have been archived</li>'
+            $html .= '<li>All orders have been archived</li>';
         }
         $html .= '<ul>';
         return $html;
