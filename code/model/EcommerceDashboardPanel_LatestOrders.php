@@ -19,12 +19,11 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
         $currencyStatement = '';
         if($currency = $this->EcommerceCurrency()) {
             if($currency->exists()) {
-                $currencyStatement = ", in ".$currency->Code.', ';
+                $currencyStatement = ", in ".$currency->Code.".";
             }
         }
-        return 'Most Recent Orders'.$currencyStatement;
+        return 'Last '.($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : self::$defaults['NumberOfOrdersToShow']).' Orders'.$currencyStatement;
     }
-
 
     public function getConfiguration()
     {
@@ -35,7 +34,8 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
                 "Number of orders to show"
             )
         );
-        $fields->push(
+        $fields->replaceField(
+            'DaysBack',
             DropdownField::create(
                 "EcommerceCurrencyID",
                 "Currency",
@@ -51,12 +51,13 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
         $submittedOrders = $this->submittedOrders();
         $submittedOrders = $submittedOrders
             ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID))
-            ->limit($this->NumberOfOrdersToShow);
+            ->limit(($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : self::$defaults['NumberOfOrdersToShow']));
         $html = '
             <ul>';
         foreach($submittedOrders as $order) {
-            $html .= '<li>
-                <a href="'.$order->CMSEditLink().'">'.$order->getFullTitle().'</a>
+            $html .= '
+            <li>
+                <a href="'.$order->CMSEditLink().'">#'.$order->ID.', '.$order->getTotalAsMoney()->Nice().', '.$order->Member()->Email.', &raquo; '.$order->Status()->Title.'</a>
             </li>';
         }
 
@@ -65,5 +66,11 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
             </ul>';
 
         return $html;
+    }
+
+    function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        $this->DaysBack = 0;
     }
 }

@@ -3,11 +3,11 @@
 class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
 {
 
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";
+    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderStep.png";
 
     function getLabelPrefix()
     {
-        return 'Orders Steps (orders that may need attention)';
+        return 'Order Journey';
     }
 
     public function getConfiguration()

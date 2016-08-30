@@ -8,13 +8,13 @@ LeftAndMain:
 
 AdminRootController:
 <<<<<<< HEAD
-  default_panel: 'CMSMain'
-=======
   default_panel: 'EcommerceDashboard'
 
 
->>>>>>> 6b9a56a178891072eb389da0a1e8055bea0babb5
 
+=======
+  default_panel: 'CMSMain'
+>>>>>>> da41e392dd269ba8f94b3f753867d0cd259e1c03
 ---
 Only:
   moduleexists: 'grouped-cms-menu'

@@ -26,15 +26,20 @@ class EcommerceTaskDashboardReset extends BuildTask
         "DashboardRecentFilesPanel",
         "DashboardRSSFeedPanel",
         "DashboardSectionEditorPanel",
-        "DashboardWeatherPanel"
-
-    )
+        "DashboardWeatherPanel",
+        "EcommerceDashboardPanel",
+        "EcommerceDashboardPanel_FavouriteProducts",
+        "EcommerceDashboardPanel_LatestOrders",
+        "EcommerceDashboardPanel_OrderCount",
+        "EcommerceDashboardPanel_SearchHistory"        
+    );
 
     public function run($request)
     {
-        foreach($tabls as $table) {
+        foreach($this->tables as $table) {
             DB::alteration_message('deleting '.$table, "deleted");
             DB::query('DELETE FROM '.$table.';');
         }
         DB::alteration_message('------------------ END ------------------');
     }
+}
