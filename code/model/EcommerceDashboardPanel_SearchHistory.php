@@ -16,7 +16,7 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
 
     function getLabelPrefix()
     {
-        return 'Search Favourites';
+        return 'Top Searches';
     }
 
     public function getConfiguration()
