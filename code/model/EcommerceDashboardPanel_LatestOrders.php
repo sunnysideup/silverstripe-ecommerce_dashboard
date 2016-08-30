@@ -25,7 +25,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
                 $currencyStatement = ", in ".$currency->Code.".";
             }
         }
-        return 'Last '.($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : self::$defaults['NumberOfOrdersToShow']).' Orders'.$currencyStatement;
+        return 'Last '.($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : $this->Config()->defaults['NumberOfOrdersToShow']).' Orders'.$currencyStatement;
     }
 
     public function getConfiguration()
@@ -54,14 +54,22 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
         $submittedOrders = $this->submittedOrders();
         $submittedOrders = $submittedOrders
             ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID))
-            ->limit(($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : self::$defaults['NumberOfOrdersToShow']));
+            ->limit(($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : $this->Config()->defaults['NumberOfOrdersToShow']));
         $html = '
             <ul>';
-        foreach($submittedOrders as $order) {
+        if($submittedOrders->count()) {
+            foreach($submittedOrders as $order) {
+                $html .= '
+                <li>
+                    <a href="'.$order->CMSEditLink().'">#'.$order->ID.', '.$order->getTotalAsMoney()->Nice().', '.$order->Member()->Email.', &raquo; '.$order->Status()->Title.'</a>
+                </li>';
+            }
+        } else {
             $html .= '
             <li>
-                <a href="'.$order->CMSEditLink().'">#'.$order->ID.', '.$order->getTotalAsMoney()->Nice().', '.$order->Member()->Email.', &raquo; '.$order->Status()->Title.'</a>
+                There are no recent orders.
             </li>';
+
         }
 
 

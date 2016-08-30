@@ -30,7 +30,7 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
     {
         $field = EcommerceSearchHistoryFormField::create('SearchHistory', 'Search Favourites')
             ->setNumberOfDays($this->DaysBack ? $this->DaysBack : 7 )
-            ->setMaxRows(($this->MaxRows ? $this->MaxRows : self::$defaults['MaxRows']))
+            ->setMaxRows(($this->MaxRows ? $this->MaxRows : $this->Config()->defaults['MaxRows']))
             ->setShowMoreLink(false)
             ->setAddTitle(false)
             ->setAddAtoZ(false);

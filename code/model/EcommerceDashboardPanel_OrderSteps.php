@@ -22,13 +22,18 @@ class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
         $html = '';
         $orderSteps = OrderStep::get()->limit(OrderStep::get()->count()-1);
         $html = '<ul>';
+        $done = false;
         foreach($orderSteps as $orderStep){
             $count = Order::get()
                 ->filter(array('StatusID' => $orderStep->ID, 'CancelledByID' => 0))
                 ->count();
             if($count > 0) {
+                $done = true;
                 $html .= '<li><strong>'.$orderStep->Title.'</strong>: <span>'.$count.'</span><em>'.$orderStep->Description.'</em></li>';
             }
+        }
+        if($done === false) {
+            $html .= '<li>All orders have been archived</li>'
         }
         $html .= '<ul>';
         return $html;

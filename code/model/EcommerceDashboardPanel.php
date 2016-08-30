@@ -149,8 +149,11 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return string where statement for orders that have been submitted.
      */
-    protected function daysBackWhereStatement()
+    protected function daysBackWhereStatement($daysBack = 0)
     {
+        if( ! $daysBack) {
+            $daysBack = $this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'];
+        }
         return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL '.($this->DaysBack ? $this->DaysBack : 7).' DAY )';
     }
 
