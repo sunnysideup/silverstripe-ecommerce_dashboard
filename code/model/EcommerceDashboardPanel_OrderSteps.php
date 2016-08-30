@@ -7,7 +7,7 @@ class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
 
     function getLabelPrefix()
     {
-        return 'Ordersteps';
+        return 'Orders Steps (orders that may need attention)';
     }
 
     public function getConfiguration()
@@ -32,5 +32,11 @@ class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
         }
         $html .= '<ul>';
         return $html;
+    }
+
+    function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        $this->DaysBack = 0;
     }
 }

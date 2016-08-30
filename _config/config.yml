@@ -6,6 +6,11 @@ LeftAndMain:
   extra_requirements_css:
    - 'ecommerce_dashboard/css/ecommercedashboard.css'
 
+AdminRootController:
+  default_panel: 'EcommerceDashboard'
+
+
+
 ---
 Only:
   moduleexists: 'grouped-cms-menu'

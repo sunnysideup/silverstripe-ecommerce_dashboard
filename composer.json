@@ -21,7 +21,8 @@
     "require":{
         "silverstripe/framework": "^3.4",
         "sunnysideup/ecommerce": "*",
-        "unclecheese/dashboard": "*"
+        "unclecheese/dashboard": "*",
+        "adrexia/dashboardmods": "*"
     },
     "extra": {
         "installer-name": "ecommerce_dashboard"
