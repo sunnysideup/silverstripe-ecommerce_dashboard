@@ -7,7 +7,14 @@ LeftAndMain:
    - 'ecommerce_dashboard/css/ecommercedashboard.css'
 
 AdminRootController:
+<<<<<<< HEAD
   default_panel: 'CMSMain'
+=======
+  default_panel: 'EcommerceDashboard'
+
+
+>>>>>>> 6b9a56a178891072eb389da0a1e8055bea0babb5
+
 ---
 Only:
   moduleexists: 'grouped-cms-menu'
