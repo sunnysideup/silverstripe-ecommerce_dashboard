@@ -51,7 +51,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
 
     public function Content()
     {
-        $submittedOrders = $this->submittedOrders();
+        $submittedOrders = $this->submittedOrders(365);
         $submittedOrders = $submittedOrders
             ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID))
             ->limit(($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : $this->Config()->defaults['NumberOfOrdersToShow']));
