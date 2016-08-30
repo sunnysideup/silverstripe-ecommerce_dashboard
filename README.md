@@ -1,4 +1,4 @@
-# silverstripe-ecommerce_dashboard
+# silverstripe e-commerce dashboard
 
 Adds a dashboard to your Silverstripe e-commerce application.  
 
