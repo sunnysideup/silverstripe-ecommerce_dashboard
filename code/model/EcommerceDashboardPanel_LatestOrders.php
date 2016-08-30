@@ -5,8 +5,11 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
 
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_LatestOrders.png";
 
+    private static $db = array(
+        'NumberOfOrdersToShow' => 'Int'
+    );
+
     private static $has_one = array(
-        'NumberOfOrdersToShow' => 'Int',
         'EcommerceCurrency' => 'EcommerceCurrency'
     );
 

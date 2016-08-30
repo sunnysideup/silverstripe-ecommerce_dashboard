@@ -80,6 +80,7 @@
 }
 
 /*** PANEL GENERIC ***/
+.cms .dashboard-panel-icon img {opacity: 0.57}
 .cms .dashboard-panel-content a, .dashboard-panel-content dl, .dashboard-panel-content dt, .dashboard-panel-content {
     color: #333;
 }
@@ -157,4 +158,12 @@
     display: block;
     float: right;
     opacity: 1;
+}
+
+/*** CONFIGURE FORM ***/
+.dashboard-panel-configure-actions button[name='action_saveConfiguration'] {
+    float: right;
+}
+.dashboard-panel-configure-actions button[name='action_cancel'] {
+    float: left;
 }
