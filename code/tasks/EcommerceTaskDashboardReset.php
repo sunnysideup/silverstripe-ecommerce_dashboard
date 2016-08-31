@@ -28,11 +28,11 @@ class EcommerceTaskDashboardReset extends BuildTask
         "DashboardSectionEditorPanel",
         "DashboardWeatherPanel"
 
-    )
+    );
 
     public function run($request)
     {
-        foreach($tabls as $table) {
+        foreach($this->tables as $table) {
             DB::alteration_message('deleting '.$table, "deleted");
             DB::query('DELETE FROM '.$table.';');
         }

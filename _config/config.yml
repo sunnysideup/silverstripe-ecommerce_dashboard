@@ -1,6 +1,6 @@
 ---
 Name: ecommerce_dashboard
-After: 'framework/*','cms/*', 'dashboard/*'
+After: 'framework/*','cms/*','dashboard/*', 'ecommerce/*'
 ---
 LeftAndMain:
   extra_requirements_css:
