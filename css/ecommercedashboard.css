@@ -74,49 +74,50 @@
 .cms .dashboard-panel-list .dashboard-panel-selection .dashboard-panel-footer{background-color: #FFFF8D}
 .cms .dashboard-panel-list .available-panel {background-color: #FFEB3B}
 .cms .dashboard-panel-list .available-panel .available-panel-icon {
-    top: 0;
-    margin-top: 0;
-    padding-top: 8px;
+top: 0;
+margin-top: 0;
+padding-top: 8px;
 }
 
 /*** PANEL GENERIC ***/
+.cms .dashboard-panel-icon img {opacity: 0.57}
 .cms .dashboard-panel-content a, .dashboard-panel-content dl, .dashboard-panel-content dt, .dashboard-panel-content {
-    color: #333;
+color: #333;
 }
 
 .cms .dashboard-panel-content dl {}
 .cms .dashboard-panel-content dt, .dashboard-panel-content dd {
-  width: 46%;
-  margin-top: 1.3em;
-  border-bottom: 1px solid #eee;
+width: 46%;
+margin-top: 1.3em;
+border-bottom: 1px solid #eee;
 }
 .cms .dashboard-panel-content dt {
-  font-weight: bold;
-  float: right;
-  clear: right;
-  color: #6D4C41;
+font-weight: bold;
+float: right;
+clear: right;
+color: #6D4C41;
 }
 .cms .dashboard-panel-content dd {
-  padding-left: 10px;
-  float: left;
-  clear: left;
-  text-align: right;
-  font-weight: bold;
+padding-left: 10px;
+float: left;
+clear: left;
+text-align: right;
+font-weight: bold;
 }
 
 .cms .dashboard-panel-list .dashboard-panel-content li {
-    padding: 10px;
-    clear: left;
+padding: 10px;
+clear: left;
 }
 .cms .dashboard-panel-list .dashboard-panel-inner ul a {
-    padding: 0;
-    font-size: inherit;
+padding: 0;
+font-size: inherit;
 }
 .cms .dashboard-panel-inner ul li {
-    border-top: none!important;
-    border-left: none!important;
-    border-right: none!important;
-    border-bottom: 1px solid #eee!important;
+border-top: none!important;
+border-left: none!important;
+border-right: none!important;
+border-bottom: 1px solid #eee!important;
 }
 
 /*** SEARCH HISTORY ***/
@@ -142,19 +143,27 @@
 
 /*** FOOTER ***/
 .cms .dashboard-panel-toolbar {
-    right: 10px;
-    left: 10px;
+right: 10px;
+left: 10px;
 }
 .cms .dashboard-panel-toolbar a {
-    display: block;
-    float: left;
-    opacity: 0.3;
+display: block;
+float: left;
+opacity: 0.3;
 }
 .cms .dashboard-panel-toolbar a:hover {
-    opacity: 1;
+opacity: 1;
 }
 .cms .dashboard-panel-toolbar a:first-child {
-    display: block;
-    float: right;
-    opacity: 1;
+display: block;
+float: right;
+opacity: 1;
+}
+
+/*** CONFIGURE FORM ***/
+.dashboard-panel-configure-actions button[name='action_saveConfiguration'] {
+float: right;
+}
+.dashboard-panel-configure-actions button[name='action_cancel'] {
+float: left;
 }

@@ -72,12 +72,12 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return DataList
      */
-    protected function submittedOrders($numberOfDaysBack = 7)
+    protected function submittedOrders($numberOfDaysBack = 0)
     {
         $orders = Order::get_datalist_of_orders_with_submit_record();
         $orders = $orders
             ->exclude(array('MemberID' => $this->excludedMembersArray()))
-            ->where($this->daysBackWhereStatement());
+            ->where($this->daysBackWhereStatement($numberOfDaysBack));
 
         return $orders;
     }
@@ -87,7 +87,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return DataList
      */
-    protected function archivedOrders($numberOfDaysBack = 7)
+    protected function archivedOrders($numberOfDaysBack = 0)
     {
         $submittedOrderStatusLogClassName = EcommerceConfig::get('OrderStatusLog', 'order_status_log_class_used_for_submitting_order');
         $lastStep = OrderStep::get()->Last();
@@ -96,7 +96,7 @@ class EcommerceDashboardPanel extends DashboardPanel
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
             ->filter(array('StatusID' => $lastStep->ID))
             ->exclude(array('MemberID' => $this->excludedMembersArray()))
-            ->where($this->daysBackWhereStatement());
+            ->where($this->daysBackWhereStatement($numberOfDaysBack));
         return $orders;
     }
 
@@ -149,9 +149,12 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return string where statement for orders that have been submitted.
      */
-    protected function daysBackWhereStatement()
+    protected function daysBackWhereStatement($daysBack = 0)
     {
-        return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL '.($this->DaysBack ? $this->DaysBack : 7).' DAY )';
+        if( ! $daysBack) {
+            $daysBack = $this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'];
+        }
+        return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL '.($daysBack).' DAY )';
     }
 
     /**

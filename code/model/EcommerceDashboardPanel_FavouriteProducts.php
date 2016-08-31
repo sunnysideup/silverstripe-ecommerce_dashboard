@@ -65,7 +65,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
                     <li>There are too many orders to work out the favourite products, please reduce the time period.</li>';
         } else {
             $html .= '
-                    <li>There are no orders.</li>';
+                    <li>There are no favourite sellers.</li>';
         }
 
 

@@ -16,21 +16,21 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
 
     function getLabelPrefix()
     {
-        return 'Search Favourites';
+        return 'Top Searches';
     }
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-        $fields->push(NumericField::create('DaysBack','DaysBack'));
+        $fields->push(NumericField::create('MaxRows','Maximum number of entries'));
         return $fields;
     }
 
     public function Content()
     {
         $field = EcommerceSearchHistoryFormField::create('SearchHistory', 'Search Favourites')
-            ->setNumberOfDays($this->DaysBack ? $this->DaysBack : 7 )
-            ->setMaxRows(($this->MaxRows ? $this->MaxRows : self::$defaults['MaxRows']))
+            ->setNumberOfDays($this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'] )
+            ->setMaxRows(($this->MaxRows ? $this->MaxRows : $this->Config()->defaults['MaxRows']))
             ->setShowMoreLink(false)
             ->setAddTitle(false)
             ->setAddAtoZ(false);

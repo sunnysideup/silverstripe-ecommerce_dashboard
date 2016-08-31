@@ -26,8 +26,12 @@ class EcommerceTaskDashboardReset extends BuildTask
         "DashboardRecentFilesPanel",
         "DashboardRSSFeedPanel",
         "DashboardSectionEditorPanel",
-        "DashboardWeatherPanel"
-
+        "DashboardWeatherPanel",
+        "EcommerceDashboardPanel",
+        "EcommerceDashboardPanel_FavouriteProducts",
+        "EcommerceDashboardPanel_LatestOrders",
+        "EcommerceDashboardPanel_OrderCount",
+        "EcommerceDashboardPanel_SearchHistory"        
     );
 
     public function run($request)
@@ -38,3 +42,4 @@ class EcommerceTaskDashboardReset extends BuildTask
         }
         DB::alteration_message('------------------ END ------------------');
     }
+}
