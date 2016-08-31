@@ -1,3 +1,5 @@
+/*** panels ***/
+
 .dashboard-panel-list .dashboard-panel .dashboard-panel-content {background-color: #fff;}
 
 .dashboard-panel-list .dashboard-panel:nth-child(1n) .dashboard-panel-header {background-color: #B71C1C;}
@@ -20,6 +22,10 @@
 .dashboard-panel-list .dashboard-panel:nth-child(14n) .dashboard-panel-header {background-color: #FF6F00;}
 .dashboard-panel-list .dashboard-panel:nth-child(15n) .dashboard-panel-header {background-color: #E65100;}
 
+.dashboard-panel-list .dashboard-panel:nth-child(16n) .dashboard-panel-header {background-color: #BF360C;}
+.dashboard-panel-list .dashboard-panel:nth-child(17n) .dashboard-panel-header {background-color: #3E2723;}
+.dashboard-panel-list .dashboard-panel:nth-child(18n) .dashboard-panel-header {background-color: #212121;}
+
 
 .dashboard-panel-list .dashboard-panel:nth-child(1n) .dashboard-panel-footer {background-color: #FFEBEE;}
 .dashboard-panel-list .dashboard-panel:nth-child(2n) .dashboard-panel-footer {background-color: #FCE4EC;}
@@ -41,9 +47,31 @@
 .dashboard-panel-list .dashboard-panel:nth-child(14n) .dashboard-panel-footer {background-color: #FFF8E1;}
 .dashboard-panel-list .dashboard-panel:nth-child(15n) .dashboard-panel-footer {background-color: #FFF3E0;}
 
+.dashboard-panel-list .dashboard-panel:nth-child(16n) .dashboard-panel-footer {background-color: #FBE9E7;}
+.dashboard-panel-list .dashboard-panel:nth-child(17n) .dashboard-panel-footer {background-color: #EFEBE9;}
+.dashboard-panel-list .dashboard-panel:nth-child(18n) .dashboard-panel-footer {background-color: #FAFAFA;}
+
+
+/**** INDIVIDUAL PANELS */
+.dashboard-panel-list .EcommerceDashboardPanel_LatestOrders .dashboard-panel-header {background-color: #880E4F!important;}
+.dashboard-panel-list .EcommerceDashboardPanel_LatestOrders .dashboard-panel-footer {background-color: #FCE4EC!important;}
+
+.dashboard-panel-list .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-header {background-color: #E65100!important;}
+.dashboard-panel-list .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-footer {background-color: #FFF3E0!important;}
+
+.dashboard-panel-list .EcommerceDashboardPanel_OrderCount .dashboard-panel-header {background-color: #3E2723!important;}
+.dashboard-panel-list .EcommerceDashboardPanel_OrderCount .dashboard-panel-footer {background-color: #EFEBE9!important;}
+
+.dashboard-panel-list .EcommerceDashboardPanel_OrderStep .dashboard-panel-header {background-color: #004D40!important;}
+.dashboard-panel-list .EcommerceDashboardPanel_OrderStep .dashboard-panel-footer {background-color: #E0F2F1!important;}
+
+.dashboard-panel-list .EcommerceDashboardPanel_SearchHistory .dashboard-panel-header {background-color: #0D47A1!important;}
+.dashboard-panel-list .EcommerceDashboardPanel_SearchHistory .dashboard-panel-footer {background-color: #E3F2FD!important;}
+
+
+/*** SELECTION OF ITEMS ***/
 .cms .dashboard-panel-list .dashboard-panel-selection .dashboard-panel-header{background-color: #FFEB3B}
 .cms .dashboard-panel-list .dashboard-panel-selection .dashboard-panel-footer{background-color: #FFFF8D}
-
 .cms .dashboard-panel-list .available-panel {background-color: #FFEB3B}
 .cms .dashboard-panel-list .available-panel .available-panel-icon {
     top: 0;
@@ -51,27 +79,24 @@
     padding-top: 8px;
 }
 
-.dashboard-panel-content a, .dashboard-panel-content dl, .dashboard-panel-content dt, .dashboard-panel-content {
+/*** PANEL GENERIC ***/
+.cms .dashboard-panel-content a, .dashboard-panel-content dl, .dashboard-panel-content dt, .dashboard-panel-content {
     color: #333;
 }
 
-.dashboard-panel-content dl {
-}
-
-.dashboard-panel-content dt, .dashboard-panel-content dd {
+.cms .dashboard-panel-content dl {}
+.cms .dashboard-panel-content dt, .dashboard-panel-content dd {
   width: 46%;
   margin-top: 1.3em;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #eee;
 }
-
-.dashboard-panel-content dt {
+.cms .dashboard-panel-content dt {
   font-weight: bold;
   float: right;
   clear: right;
-  color: #999;
+  color: #6D4C41;
 }
-
-.dashboard-panel-content dd {
+.cms .dashboard-panel-content dd {
   padding-left: 10px;
   float: left;
   clear: left;
@@ -79,16 +104,57 @@
   font-weight: bold;
 }
 
+.cms .dashboard-panel-list .dashboard-panel-content li {
+    padding: 10px;
+    clear: left;
+}
+.cms .dashboard-panel-list .dashboard-panel-inner ul a {
+    padding: 0;
+    font-size: inherit;
+}
+.cms .dashboard-panel-inner ul li {
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: 1px solid #eee!important;
+}
 
-.EcommerceDashboardPanel_SearchHistory h3 {font-size: 12px; font-weight: normal;}
-
-.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 10px; clear: left;}
-.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span {float: left; display: block; width: 3em;}
-.EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important; margin-left: 3.5em; display: block; }
+/*** SEARCH HISTORY ***/
+.cms .EcommerceDashboardPanel_SearchHistory .dashboard-panel-content h3 {font-size: 12px; font-weight: normal;}
 
 
-.EcommerceDashboardPanel_OrderStep .dashboard-panel-content em {display: none; clear: both;}
-.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li:hover em {display: block;}
-.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content ul li {padding: 10px; border: 0px solid transparent; border-bottom: 1px solid green;}
-.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li strong {display: block; float:left;}
-.EcommerceDashboardPanel_OrderStep .dashboard-panel-content li span {display: block; float: right}
+
+/*** FAVOURITES ***/
+.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 10px; clear: left;}
+.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span {float: left; display: block; width: 3em;color: #FB8C00;}
+.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span strong{font-size: 1.5em; }
+.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important; margin-left: 3.5em; display: block; }
+
+
+
+/*** ORDER STEPS ***/
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li strong {display: block; float:left;}
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li span {display: block; float: right}
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content em {display: none; clear: both;}
+.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li:hover em {display: block;}
+
+
+
+/*** FOOTER ***/
+.cms .dashboard-panel-toolbar {
+    right: 10px;
+    left: 10px;
+}
+.cms .dashboard-panel-toolbar a {
+    display: block;
+    float: left;
+    opacity: 0.3;
+}
+.cms .dashboard-panel-toolbar a:hover {
+    opacity: 1;
+}
+.cms .dashboard-panel-toolbar a:first-child {
+    display: block;
+    float: right;
+    opacity: 1;
+}

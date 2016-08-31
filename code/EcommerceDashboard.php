@@ -13,7 +13,7 @@ class EcommerceDashboard extends Dashboard
 
 
 
-    private static $menu_priority = 100;
+    private static $menu_priority = 999;
 
 
 

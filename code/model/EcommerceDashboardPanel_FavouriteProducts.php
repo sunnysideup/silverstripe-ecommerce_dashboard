@@ -10,7 +10,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
     );
 
     private static $defaults = array(
-        'NumberOfProducts' => 3
+        'NumberOfProducts' => 7
     );
 
     function getLabelPrefix()
@@ -18,12 +18,15 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
         return 'Favourite sellers';
     }
 
-
+    public function getTitle()
+    {
+        return parent::getTitle();
+    }
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-        $fields->push(NumericField::create('NumberOfProducts','Number of products'));
+        $fields->push(NumericField::create('NumberOfProducts','Number of products to show'));
         return $fields;
     }
 
