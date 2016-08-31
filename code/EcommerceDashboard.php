@@ -4,28 +4,15 @@
 class EcommerceDashboard extends Dashboard
 {
 
-
     private static $menu_title = "Dashboard";
-
-
 
     private static $url_segment = "ecom-dashboard";
 
+    private static $menu_priority = 100;
 
-
-<<<<<<< HEAD
-=======
-    private static $menu_priority = 99999999;
-
-
-
->>>>>>> 9525a5afeb0cc4bd6ad2dabeeafdd1ba573972fc
     private static $url_priority = 30;
 
-
-
     private static $menu_icon = "dashboard/images/dashboard.png";
-
 
     private static $tree_class = 'EcommerceDashboardPanel';
 
