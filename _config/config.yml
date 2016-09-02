@@ -1,6 +1,6 @@
 ---
 Name: ecommerce_dashboard
-After: 'framework/*','cms/*','dashboard/*', 'ecommerce/*'
+After: 'framework/*', 'cms/*', 'dashboard/*'
 ---
 LeftAndMain:
   extra_requirements_css:
@@ -8,6 +8,7 @@ LeftAndMain:
 
 AdminRootController:
   default_panel: 'CMSMain'
+
 ---
 Only:
   moduleexists: 'grouped-cms-menu'
