@@ -2,18 +2,17 @@
 
 class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
 {
-
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";
 
     private static $has_one = array(
         'EcommerceCurrency' => 'EcommerceCurrency'
     );
 
-    function getLabelPrefix()
+    public function getLabelPrefix()
     {
         $currencyStatement = '';
-        if($currency = $this->EcommerceCurrency()) {
-            if($currency->exists()) {
+        if ($currency = $this->EcommerceCurrency()) {
+            if ($currency->exists()) {
                 $currencyStatement = ", in ".$currency->Code.', ';
             }
         }
@@ -47,8 +46,8 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
         $html .= '
                 <dt>Count of orders</dt>
                 <dd>'.$count.'</dd>';
-        if($count < $this->maxOrdersForLoop() && $count > 0) {
-            foreach($submittedOrders as $order) {
+        if ($count < $this->maxOrdersForLoop() && $count > 0) {
+            foreach ($submittedOrders as $order) {
                 $sum += $order->getSubTotal();
                 $itemCount += $order->getTotalItemsTimesQuantity();
             }
@@ -73,7 +72,7 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
             $html .= '
                     <dt>Average cost per item</dt>
                     <dd>'.$costPerItemDBField->Nice().'</dd>';
-        } elseif($count >= $this->maxOrdersForLoop()) {
+        } elseif ($count >= $this->maxOrdersForLoop()) {
             $html .= '
                     <dt>Sum of sub-totals</dt>
                     <dd>Please reduce the number of orders to calculate the total.</dd>';

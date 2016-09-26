@@ -3,31 +3,31 @@
     "type": "silverstripe-module",
     "description": "Adds a dash board to the silverstripe e-commerce application",
     "keywords": [
-        "e-commerce",
+        "Silverstripe-CMS",
         "CMS",
         "Silverstripe",
+        "e-commerce",
         "dashboard",
         "statistics",
         "sales",
         "management summary"
     ],
     "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
-    "authors":[
+    "authors": [
         {
             "name": "Nicolaas Francken",
-            "homepage": "https://github.com/sunnysideup",
-            "email" : "modules@sunnysideup.co.nz",
-            "role" : "lead developer"
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
         }
     ],
-    "require":{
-        "silverstripe/framework": "^3.4",
+    "require": {
+        "silverstripe/framework": "~3.1",
         "sunnysideup/ecommerce": "*",
         "unclecheese/dashboard": "*",
-        "adrexia/dashboardmods": "*"
+        "adrexia/dashboardmods": "*",
+        "silverstripe/cms": "~3.1"
     },
     "extra": {
         "installer-name": "ecommerce_dashboard"
     }
-
 }

@@ -3,7 +3,6 @@
 
 class EcommerceDashboard extends Dashboard
 {
-
     private static $menu_title = "Dashboard";
 
     private static $url_segment = "ecom-dashboard";
@@ -22,13 +21,14 @@ class EcommerceDashboard extends Dashboard
      *
      * @return ArrayList
      */
-    public function AllPanels() {
+    public function AllPanels()
+    {
         $panels = parent::AllPanels();
         $al = ArrayList::create();
-        foreach($panels as $panel) {
-            if($panel instanceof EcommerceDashboardPanel) {
-                if($panel->registered()) {
-                    if($panel->ClassName !== 'EcommerceDashboardPanel') {
+        foreach ($panels as $panel) {
+            if ($panel instanceof EcommerceDashboardPanel) {
+                if ($panel->registered()) {
+                    if ($panel->ClassName !== 'EcommerceDashboardPanel') {
                         $al->push($panel);
                     }
                 }
@@ -36,7 +36,4 @@ class EcommerceDashboard extends Dashboard
         }
         return $al;
     }
-
-
-
 }

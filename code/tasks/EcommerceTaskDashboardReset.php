@@ -31,12 +31,12 @@ class EcommerceTaskDashboardReset extends BuildTask
         "EcommerceDashboardPanel_FavouriteProducts",
         "EcommerceDashboardPanel_LatestOrders",
         "EcommerceDashboardPanel_OrderCount",
-        "EcommerceDashboardPanel_SearchHistory"        
+        "EcommerceDashboardPanel_SearchHistory"
     );
 
     public function run($request)
     {
-        foreach($this->tables as $table) {
+        foreach ($this->tables as $table) {
             DB::alteration_message('deleting '.$table, "deleted");
             DB::query('DELETE FROM '.$table.';');
         }

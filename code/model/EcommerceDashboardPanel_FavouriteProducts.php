@@ -2,7 +2,6 @@
 
 class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
 {
-
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_FavouriteProducts.png";
 
     private static $db = array(
@@ -13,7 +12,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
         'NumberOfProducts' => 7
     );
 
-    function getLabelPrefix()
+    public function getLabelPrefix()
     {
         return 'Favourite sellers';
     }
@@ -26,7 +25,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-        $fields->push(NumericField::create('NumberOfProducts','Number of products to show'));
+        $fields->push(NumericField::create('NumberOfProducts', 'Number of products to show'));
         return $fields;
     }
 
@@ -37,30 +36,30 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
             <ul>';
         $buyableArray = array();
         $count = $submittedOrders->count();
-        if($count < $this->maxOrdersForLoop() && $count > 0) {
-            foreach($submittedOrders as $order) {
-                foreach($order->Items() as $item) {
+        if ($count < $this->maxOrdersForLoop() && $count > 0) {
+            foreach ($submittedOrders as $order) {
+                foreach ($order->Items() as $item) {
                     $key = $item->BuyableClassName.".".$item->BuyableID;
-                    if(! isset($buyableArray[$key])) {
+                    if (! isset($buyableArray[$key])) {
                         $buyableArray[$key] = 0;
                     }
                     $buyableArray[$key]++;
                 }
             }
             arsort($buyableArray, SORT_NUMERIC);
-            for($i = 0; $i < $this->NumberOfProducts; $i++) {
+            for ($i = 0; $i < $this->NumberOfProducts; $i++) {
                 $oneRow = array_slice($buyableArray, $i, 1);
-                foreach($oneRow as $key => $count) {
+                foreach ($oneRow as $key => $count) {
                     list($className, $id) = explode('.', $key);
                     $buyable = $className::get()->byID($id);
-                    if($buyable) {
+                    if ($buyable) {
                         $html .= '<li class="pos'.$i.'"><span><strong>'.$count.'</strong> × </span><a href="'.$buyable->Link().'">'.$buyable->FullName.'</a></li>';
                     } else {
                         $html .= '<li class="pos'.$i.'">Error with '.$key.'</li>';
                     }
                 }
             }
-        } elseif($count >= $this->maxOrdersForLoop()) {
+        } elseif ($count >= $this->maxOrdersForLoop()) {
             $html .= '
                     <li>There are too many orders to work out the favourite products, please reduce the time period.</li>';
         } else {

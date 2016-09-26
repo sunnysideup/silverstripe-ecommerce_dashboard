@@ -11,11 +11,11 @@ class EcommerceDashboardPanel extends DashboardPanel
     private static $configure_on_create = true;
 
 
-    private static $db = array (
+    private static $db = array(
         'DaysBack' => 'Int'
     );
 
-    private static $defaults = array (
+    private static $defaults = array(
         'DaysBack' => 7
     );
 
@@ -30,13 +30,13 @@ class EcommerceDashboardPanel extends DashboardPanel
     public function getTitle()
     {
         $str = $this->getLabelPrefix();
-        if($this->DaysBack) {
-            $str .= ' '.sprintf(_t('EcommerceDashboardPanel.IN_THE_LAST_XXX_DAYS','in the last %s days.'),$this->DaysBack);
+        if ($this->DaysBack) {
+            $str .= ' '.sprintf(_t('EcommerceDashboardPanel.IN_THE_LAST_XXX_DAYS', 'in the last %s days.'), $this->DaysBack);
         }
         return $str;
     }
 
-    function getLabelPrefix()
+    public function getLabelPrefix()
     {
         return 'please set in '.$this->ClassName;
     }
@@ -45,7 +45,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     {
         $fields = parent::getConfiguration();
         $fields->push(NumericField::create("DaysBack", "Number of days back"));
-        $fields->replaceField('Title', ReadonlyField::create('Title',''));
+        $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 
         return $fields;
     }
@@ -107,7 +107,8 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return Dashboard
      */
-    public function getDashboard() {
+    public function getDashboard()
+    {
         return Injector::inst()->get("EcommerceDashboard");
     }
 
@@ -125,17 +126,17 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function excludedMembersArray()
     {
-        if( ! count(self::$_excluded_members_array)) {
+        if (! count(self::$_excluded_members_array)) {
             self::$_excluded_members_array = array(-1 => -1);
             $adminGroup = EcommerceRole::get_admin_group();
             $assitantGroup = EcommerceRole::get_assistant_group();
-            if($adminGroup) {
-                foreach($adminGroup->Members() as $member){
+            if ($adminGroup) {
+                foreach ($adminGroup->Members() as $member) {
                     self::$_excluded_members_array[$member->ID] = $member->ID;
                 }
             }
-            if($assitantGroup) {
-                foreach($assitantGroup->Members() as $member){
+            if ($assitantGroup) {
+                foreach ($assitantGroup->Members() as $member) {
                     self::$_excluded_members_array[$member->ID] = $member->ID;
                 }
             }
@@ -151,7 +152,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function daysBackWhereStatement($daysBack = 0)
     {
-        if( ! $daysBack) {
+        if (! $daysBack) {
             $daysBack = $this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'];
         }
         return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL '.($daysBack).' DAY )';
@@ -170,7 +171,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     //protected $template;
 
-    function maxOrdersForLoop()
+    public function maxOrdersForLoop()
     {
         return 500;
     }
@@ -181,15 +182,15 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @return string
      */
-    public function registered() {
+    public function registered()
+    {
         $enabled = Config::inst()->get($this->ClassName, 'enabled');
         if (is_bool($enabled)) {
             return self::config()->enabled;
         }
-        if(strtolower(self::config()->enabled) == 'no') {
+        if (strtolower(self::config()->enabled) == 'no') {
             return false;
         }
         return true;
     }
-
 }
