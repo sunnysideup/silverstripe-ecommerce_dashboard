@@ -13,6 +13,9 @@ AdminRootController:
 EcommerceRole:
   admin_role_permission_codes:
     - CMS_ACCESS_Dashboard
+    - CMS_ACCESS_DashboardAddPanels
+    - CMS_ACCESS_DashboardConfigurePanels
+    - CMS_ACCESS_DashboardDeletePanels
 
 ---
 Only:
