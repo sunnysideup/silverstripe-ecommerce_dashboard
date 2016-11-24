@@ -1,6 +1,0 @@
-number of orders placed in last ... days
-amount of $$$ placed in last ... days
-number of open carts
-number of carts that still need to be processed
-top selling items
-top search items

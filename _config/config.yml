@@ -9,6 +9,11 @@ LeftAndMain:
 AdminRootController:
   default_panel: 'CMSMain'
 
+
+EcommerceRole:
+  admin_role_permission_codes:
+    - CMS_ACCESS_Dashboard
+
 ---
 Only:
   moduleexists: 'grouped-cms-menu'
