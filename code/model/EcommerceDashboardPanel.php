@@ -57,7 +57,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function openOrders($numberOfDaysBack = 7)
     {
-        $firstStep = OrderStep::get()->First();
+        $firstStep = DataObject::get_one('OrderStep');
         $orders = Order::get()
             ->LeftJoin('OrderStatusLog', '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
