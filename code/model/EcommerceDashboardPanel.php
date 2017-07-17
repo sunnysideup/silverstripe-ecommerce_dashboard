@@ -90,7 +90,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     protected function archivedOrders($numberOfDaysBack = 0)
     {
         $submittedOrderStatusLogClassName = EcommerceConfig::get('OrderStatusLog', 'order_status_log_class_used_for_submitting_order');
-        $lastStep = OrderStep::get()->Last();
+        $lastStep = OrderStep::last_order_step();
         return Order::get()
             ->LeftJoin('OrderStatusLog', '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
