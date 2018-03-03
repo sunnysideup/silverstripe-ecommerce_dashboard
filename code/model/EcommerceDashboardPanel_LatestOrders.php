@@ -36,23 +36,29 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
                 "Number of orders to show"
             )
         );
-        $fields->replaceField(
-            'DaysBack',
-            DropdownField::create(
-                "EcommerceCurrencyID",
-                "Currency",
-                EcommerceCurrency::get()->map()
-            )
-        );
-
+        $map = EcommerceCurrency::get()->map();
+        if($map instanceof SS_Map) {
+            $fields->replaceField(
+                'DaysBack',
+                DropdownField::create(
+                    "EcommerceCurrencyID",
+                    "Currency",
+                    [0 => '-- any --'] + EcommerceCurrency::get()->map()->toArray()
+                )
+            );
+        }
         return $fields;
     }
 
     public function Content()
     {
         $submittedOrders = $this->submittedOrders(365);
+        if($this->EcommerceCurrencyID) {
+            $submittedOrders = $submittedOrders
+                ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID));
+        }
+        $submittedOrders = $submittedOrders->sort(['LastEdited' => 'DESC']);
         $submittedOrders = $submittedOrders
-            ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID))
             ->limit(($this->NumberOfOrdersToShow ? $this->NumberOfOrdersToShow : $this->Config()->defaults['NumberOfOrdersToShow']));
         $html = '
             <ul>';
