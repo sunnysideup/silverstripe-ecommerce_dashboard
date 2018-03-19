@@ -21,11 +21,11 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "~3.1",
+        "silverstripe/framework": "~3.6",
         "sunnysideup/ecommerce": "*",
         "unclecheese/dashboard": "*",
         "adrexia/dashboardmods": "*",
-        "silverstripe/cms": "~3.1"
+        "silverstripe/cms": "~3.6"
     },
     "extra": {
         "installer-name": "ecommerce_dashboard"
