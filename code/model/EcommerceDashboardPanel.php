@@ -193,4 +193,9 @@ class EcommerceDashboardPanel extends DashboardPanel
         }
         return true;
     }
+
+    protected function CalculatedDaysBack()
+    {
+        return $this->DaysBack ? : 7;
+    }
 }
