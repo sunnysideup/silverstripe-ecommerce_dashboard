@@ -37,7 +37,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
             )
         );
         $map = EcommerceCurrency::get()->map();
-        if($map instanceof SS_Map) {
+        if ($map instanceof SS_Map) {
             $fields->replaceField(
                 'DaysBack',
                 DropdownField::create(
@@ -53,7 +53,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
     public function Content()
     {
         $submittedOrders = $this->submittedOrders(365);
-        if($this->EcommerceCurrencyID) {
+        if ($this->EcommerceCurrencyID) {
             $submittedOrders = $submittedOrders
                 ->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID));
         }
