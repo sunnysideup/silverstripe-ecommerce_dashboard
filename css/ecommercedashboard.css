@@ -70,9 +70,11 @@
 
 
 /*** SELECTION OF ITEMS ***/
+.cms .dashboard-panel-selection .dashboard-panel-header h3 {color: #333;}
+.cms .dashboard-panel-selection .dashboard-panel-header .dashboard-panel-icon {background-color: #e6b414; height: 22px;}
 .cms .dashboard-panel-list .dashboard-panel-selection .dashboard-panel-header{background-color: #FFEB3B}
 .cms .dashboard-panel-list .dashboard-panel-selection .dashboard-panel-footer{background-color: #FFFF8D}
-.cms .dashboard-panel-list .available-panel {background-color: #FFEB3B}
+.cms .dashboard-panel-list .available-panel {background-color: #FFEB3B;}
 .cms .dashboard-panel-list .available-panel .available-panel-icon {
 top: 0;
 margin-top: 0;
