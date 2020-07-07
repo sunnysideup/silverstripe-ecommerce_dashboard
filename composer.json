@@ -21,10 +21,9 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "~3.6",
         "sunnysideup/ecommerce": "*",
         "unclecheese/dashboard": "*",
-	"sunnysideup/dashboardmods": "*",
+        "sunnysideup/dashboardmods": "*",
         "silverstripe/cms": "~3.6"
     },
     "extra": {
