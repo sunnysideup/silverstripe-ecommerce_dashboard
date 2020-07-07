@@ -1,10 +1,10 @@
 ---
 Name: ecommerce_dashboard
 After:
-   - 'framework/*'
-   - 'cms/*'
-   - 'dashboard/*'
-   - 'ecommerce/*'
+  - '#coreconfig'
+  - '#cmsextensions'
+  - '#dashboard'
+  - '#ecommerce'
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
