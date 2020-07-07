@@ -22,10 +22,9 @@ use SilverStripe\Core\Injector\Injector;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
 use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
 use SilverStripe\Core\Config\Config;
+use UncleCheese\Dashboard\DashboardPanel;
 
-
-
-class EcommerceDashboardPanel extends DataObject
+class EcommerceDashboardPanel extends DashboardPanel
 {
 
 
@@ -34,19 +33,6 @@ class EcommerceDashboardPanel extends DataObject
      * configuration in order to show data
      */
     private static $configure_on_create = true;
-
-
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * OLD: private static $db (case sensitive)
-  * NEW:
-    private static $table_name = '[SEARCH_REPLACE_CLASS_NAME_GOES_HERE]';
-
-    private static $db (COMPLEX)
-  * EXP: Check that is class indeed extends DataObject and that it is not a data-extension!
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
 
     private static $table_name = 'EcommerceDashboardPanel';
 
@@ -77,30 +63,12 @@ class EcommerceDashboardPanel extends DataObject
 
     public function getLabelPrefix()
     {
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: $this->ClassName (case sensitive)
-  * NEW: $this->ClassName (COMPLEX)
-  * EXP: Check if the class name can still be used as such
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
         return 'please set in '.$this->ClassName;
     }
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: NumericField::create (case sensitive)
-  * NEW: NumericField::create (COMPLEX)
-  * EXP: check the number of decimals required and add as ->setScale(2)
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
         $fields->push(NumericField::create("DaysBack", "Number of days back"));
         $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 
@@ -241,15 +209,6 @@ class EcommerceDashboardPanel extends DataObject
      */
     public function registered()
     {
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: $this->ClassName (case sensitive)
-  * NEW: $this->ClassName (COMPLEX)
-  * EXP: Check if the class name can still be used as such
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
         $enabled = Config::inst()->get($this->ClassName, 'enabled');
         if (is_bool($enabled)) {
             return self::config()->enabled;

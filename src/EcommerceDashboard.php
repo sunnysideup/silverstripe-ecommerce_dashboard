@@ -2,14 +2,11 @@
 
 namespace Sunnysideup\EcommerceDashboard;
 
-use Dashboard;
-
-
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
 use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataObject;
+use UncleCheese\Dashboard\Dashboard;
 
-class EcommerceDashboard extends DataObject
+class EcommerceDashboard extends Dashboard
 {
     private static $menu_title = "Dashboard";
 

@@ -14,17 +14,6 @@ use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
 class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
 {
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * OLD: private static $db (case sensitive)
-  * NEW:
-    private static $table_name = '[SEARCH_REPLACE_CLASS_NAME_GOES_HERE]';
-
-    private static $db (COMPLEX)
-  * EXP: Check that is class indeed extends DataObject and that it is not a data-extension!
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
-
     private static $table_name = 'EcommerceDashboardPanel_SearchHistory';
 
     private static $db = array(
@@ -45,15 +34,6 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: NumericField::create (case sensitive)
-  * NEW: NumericField::create (COMPLEX)
-  * EXP: check the number of decimals required and add as ->setScale(2)
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
         $fields->push(NumericField::create('MaxRows', 'Maximum number of entries'));
         return $fields;
     }
