@@ -36,3 +36,4 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
         return $field->Field();
     }
 }
+

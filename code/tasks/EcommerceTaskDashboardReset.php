@@ -43,3 +43,4 @@ class EcommerceTaskDashboardReset extends BuildTask
         DB::alteration_message('------------------ END ------------------');
     }
 }
+

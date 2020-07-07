@@ -37,3 +37,4 @@ class EcommerceDashboard extends Dashboard
         return $al;
     }
 }
+

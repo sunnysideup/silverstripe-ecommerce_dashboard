@@ -87,3 +87,4 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
         return $html;
     }
 }
+

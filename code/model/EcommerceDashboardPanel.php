@@ -199,3 +199,4 @@ class EcommerceDashboardPanel extends DashboardPanel
         return $this->DaysBack ? : 7;
     }
 }
+

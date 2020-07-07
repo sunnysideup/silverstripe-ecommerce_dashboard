@@ -70,3 +70,4 @@ class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
         return $html;
     }
 }
+

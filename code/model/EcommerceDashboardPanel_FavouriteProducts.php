@@ -74,3 +74,4 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
         return $html;
     }
 }
+

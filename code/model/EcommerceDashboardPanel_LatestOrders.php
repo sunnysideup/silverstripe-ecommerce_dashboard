@@ -89,3 +89,4 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
         $this->DaysBack = 0;
     }
 }
+
