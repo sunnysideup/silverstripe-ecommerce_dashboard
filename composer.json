@@ -24,7 +24,7 @@
         "sunnysideup/ecommerce": "*",
         "unclecheese/dashboard": "*",
         "sunnysideup/dashboardmods": "*",
-        "silverstripe/cms": "~3.6"
+        "silverstripe/recipe-cms": "^4.4"
     },
     "extra": {
         "installer-name": "ecommerce_dashboard"
