@@ -24,7 +24,7 @@
         "silverstripe/framework": "~3.6",
         "sunnysideup/ecommerce": "*",
         "unclecheese/dashboard": "*",
-        "adrexia/dashboardmods": "*",
+	"sunnysideup/dashboardmods": "*",
         "silverstripe/cms": "~3.6"
     },
     "extra": {
