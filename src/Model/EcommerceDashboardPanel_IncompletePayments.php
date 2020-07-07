@@ -12,6 +12,8 @@ class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_IncompletePayments.png";
 
+    private static $table_name = 'EcommerceDashboardPanel_IncompletePayments';
+
     public function getLabelPrefix()
     {
         return 'Incomplete payments';

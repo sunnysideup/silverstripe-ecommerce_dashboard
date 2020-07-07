@@ -15,6 +15,8 @@ class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderStep.png";
 
+    private static $table_name = 'EcommerceDashboardPanel_OrderStep';
+
     public function getLabelPrefix()
     {
         return 'Order Journey';

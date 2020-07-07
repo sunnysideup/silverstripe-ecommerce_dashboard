@@ -15,6 +15,8 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";
 
+    private static $table_name = 'EcommerceDashboardPanel_OrderCount';
+
     private static $has_one = array(
         'EcommerceCurrency' => EcommerceCurrency::class
     );
