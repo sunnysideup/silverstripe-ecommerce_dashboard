@@ -2,15 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-
-
-
-
-
-
-
-
-
+use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
@@ -44,8 +36,10 @@ class EcommerceDashboardPanel extends DashboardPanel
         'DaysBack' => 7
     );
 
+    protected $template = 'Dashboard_Content';
 
-    private static $icon = "ecommerce_dashboard/images/icons";
+
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons";
 
     public function getLabel()
     {
@@ -63,7 +57,7 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     public function getLabelPrefix()
     {
-        return 'please set in '.$this->ClassName;
+        return 'please set in '. ClassInfo::shortName($this->ClassName);
     }
 
     public function getConfiguration()

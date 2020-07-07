@@ -10,7 +10,7 @@ use Sunnysideup\Ecommerce\Model\Money\EcommercePayment;
 
 class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
 {
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_IncompletePayments.png";
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_IncompletePayments.png";
 
     private static $table_name = 'EcommerceDashboardPanel_IncompletePayments';
 

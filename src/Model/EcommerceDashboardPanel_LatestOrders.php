@@ -15,7 +15,7 @@ use SilverStripe\Forms\DropdownField;
 
 class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
 {
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_LatestOrders.png";
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_LatestOrders.png";
 
     private static $table_name = 'EcommerceDashboardPanel_LatestOrders';
 

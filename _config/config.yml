@@ -8,7 +8,7 @@ After:
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - ecommerce_dashboard/css/ecommercedashboard.css
+    - 'sunnysideup/ecommerce_dashboard: client/css/ecommercedashboard.css'
 SilverStripe\Admin\AdminRootController:
   default_panel: SilverStripe\CMS\Controllers\CMSMain
 Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole:

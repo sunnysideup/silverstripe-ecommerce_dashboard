@@ -16,7 +16,7 @@ class EcommerceDashboard extends Dashboard
 
     private static $url_priority = 30;
 
-    private static $menu_icon = "dashboard/images/dashboard.png";
+    private static $menu_icon = "sunnysideup/dashboardmods: client/images/dashboard.png";
 
     private static $tree_class = EcommerceDashboardPanel::class;
 

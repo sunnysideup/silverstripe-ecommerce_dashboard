@@ -13,7 +13,7 @@ use SilverStripe\ORM\FieldType\DBField;
 
 class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
 {
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_OrderCount.png";
 
     private static $table_name = 'EcommerceDashboardPanel_OrderCount';
 

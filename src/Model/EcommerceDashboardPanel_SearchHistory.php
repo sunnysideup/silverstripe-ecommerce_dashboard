@@ -24,7 +24,7 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
         'MaxRows' => 7
     );
 
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_SearchHistory.png";
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_SearchHistory.png";
 
     public function getLabelPrefix()
     {

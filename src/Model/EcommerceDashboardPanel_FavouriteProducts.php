@@ -8,7 +8,7 @@ use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
 
 class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
 {
-    private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_FavouriteProducts.png";
+    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_FavouriteProducts.png";
 
     private static $table_name = 'EcommerceDashboardPanel_FavouriteProducts';
 
