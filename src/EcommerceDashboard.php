@@ -7,11 +7,9 @@ use Dashboard;
 
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
 
-
-
-
-class EcommerceDashboard extends Dashboard
+class EcommerceDashboard extends DataObject
 {
     private static $menu_title = "Dashboard";
 
