@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/ecommerce_dashboard",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Adds a dash board to the silverstripe e-commerce application",
     "keywords": [
         "Silverstripe-CMS",
