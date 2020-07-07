@@ -1,5 +1,19 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use DashboardPanel;
+use NumericField;
+use ReadonlyField;
+use DataObject;
+use Order;
+use EcommerceConfig;
+use OrderStep;
+use Injector;
+use EcommerceRole;
+use Config;
+
+
 class EcommerceDashboardPanel extends DashboardPanel
 {
 

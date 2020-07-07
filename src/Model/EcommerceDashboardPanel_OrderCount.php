@@ -1,5 +1,12 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use DropdownField;
+use EcommerceCurrency;
+use DBField;
+
+
 class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";

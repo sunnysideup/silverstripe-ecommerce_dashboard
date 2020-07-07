@@ -1,5 +1,13 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use NumericField;
+use EcommerceCurrency;
+use SS_Map;
+use DropdownField;
+
+
 class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_LatestOrders.png";

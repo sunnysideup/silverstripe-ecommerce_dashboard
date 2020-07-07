@@ -1,5 +1,10 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use EcommercePayment;
+
+
 
 class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
 {

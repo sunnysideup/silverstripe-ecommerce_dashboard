@@ -1,5 +1,10 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use NumericField;
+
+
 class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
 {
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_FavouriteProducts.png";

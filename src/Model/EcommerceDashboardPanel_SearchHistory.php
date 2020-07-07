@@ -1,5 +1,11 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard\Model;
+
+use NumericField;
+use EcommerceSearchHistoryFormField;
+
+
 
 class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
 {

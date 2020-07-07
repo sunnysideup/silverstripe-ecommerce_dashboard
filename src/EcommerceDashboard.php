@@ -1,5 +1,12 @@
 <?php
 
+namespace Sunnysideup\EcommerceDashboard;
+
+use Dashboard;
+use ArrayList;
+use EcommerceDashboardPanel;
+
+
 
 class EcommerceDashboard extends Dashboard
 {
