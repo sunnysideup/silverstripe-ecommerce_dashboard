@@ -35,6 +35,15 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: NumericField::create (case sensitive)
+  * NEW: NumericField::create (COMPLEX)
+  * EXP: check the number of decimals required and add as ->setScale(2)
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         $fields->push(NumericField::create('MaxRows', 'Maximum number of entries'));
         return $fields;
     }

@@ -45,6 +45,15 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
     {
         $fields = parent::getConfiguration();
         $fields->push(
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: NumericField::create (case sensitive)
+  * NEW: NumericField::create (COMPLEX)
+  * EXP: check the number of decimals required and add as ->setScale(2)
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
             NumericField::create(
                 "NumberOfOrdersToShow",
                 "Number of orders to show"

@@ -52,12 +52,30 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     public function getLabelPrefix()
     {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $this->ClassName (case sensitive)
+  * NEW: $this->ClassName (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         return 'please set in '.$this->ClassName;
     }
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: NumericField::create (case sensitive)
+  * NEW: NumericField::create (COMPLEX)
+  * EXP: check the number of decimals required and add as ->setScale(2)
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         $fields->push(NumericField::create("DaysBack", "Number of days back"));
         $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 
@@ -131,7 +149,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      *
      * @var array
      */
-    private static $_excluded_members_array = array();
+    private static $_excluded_members_array = [];
 
     /**
      *
@@ -198,6 +216,15 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     public function registered()
     {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: $this->ClassName (case sensitive)
+  * NEW: $this->ClassName (COMPLEX)
+  * EXP: Check if the class name can still be used as such
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
         $enabled = Config::inst()->get($this->ClassName, 'enabled');
         if (is_bool($enabled)) {
             return self::config()->enabled;

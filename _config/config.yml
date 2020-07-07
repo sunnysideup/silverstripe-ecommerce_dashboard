@@ -7,7 +7,7 @@ After:
    - 'ecommerce/*'
 ---
 
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
    - 'ecommerce_dashboard/css/ecommercedashboard.css'
 
@@ -26,7 +26,7 @@ EcommerceRole:
 Only:
   moduleexists: 'grouped-cms-menu'
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Shop:
       - EcommerceDashboard
