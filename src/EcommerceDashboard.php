@@ -3,8 +3,11 @@
 namespace Sunnysideup\EcommerceDashboard;
 
 use Dashboard;
-use ArrayList;
-use EcommerceDashboardPanel;
+
+
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
+use SilverStripe\ORM\ArrayList;
+
 
 
 
@@ -20,7 +23,7 @@ class EcommerceDashboard extends Dashboard
 
     private static $menu_icon = "dashboard/images/dashboard.png";
 
-    private static $tree_class = 'EcommerceDashboardPanel';
+    private static $tree_class = EcommerceDashboardPanel::class;
 
     /**
      * Gets all the available panels that can be installed on the dashboard. All subclasses of
@@ -35,7 +38,7 @@ class EcommerceDashboard extends Dashboard
         foreach ($panels as $panel) {
             if ($panel instanceof EcommerceDashboardPanel) {
                 if ($panel->registered()) {
-                    if ($panel->ClassName !== 'EcommerceDashboardPanel') {
+                    if ($panel->ClassName !== EcommerceDashboardPanel::class) {
                         $al->push($panel);
                     }
                 }

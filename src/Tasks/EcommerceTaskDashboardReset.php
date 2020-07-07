@@ -2,8 +2,16 @@
 
 namespace Sunnysideup\EcommerceDashboard\Tasks;
 
-use BuildTask;
-use DB;
+
+
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel_FavouriteProducts;
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel_LatestOrders;
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel_OrderCount;
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel_SearchHistory;
+use SilverStripe\ORM\DB;
+use SilverStripe\Dev\BuildTask;
+
 
 
 /**
@@ -33,11 +41,11 @@ class EcommerceTaskDashboardReset extends BuildTask
         "DashboardRSSFeedPanel",
         "DashboardSectionEditorPanel",
         "DashboardWeatherPanel",
-        "EcommerceDashboardPanel",
-        "EcommerceDashboardPanel_FavouriteProducts",
-        "EcommerceDashboardPanel_LatestOrders",
-        "EcommerceDashboardPanel_OrderCount",
-        "EcommerceDashboardPanel_SearchHistory"
+        EcommerceDashboardPanel::class,
+        EcommerceDashboardPanel_FavouriteProducts::class,
+        EcommerceDashboardPanel_LatestOrders::class,
+        EcommerceDashboardPanel_OrderCount::class,
+        EcommerceDashboardPanel_SearchHistory::class
     );
 
     public function run($request)

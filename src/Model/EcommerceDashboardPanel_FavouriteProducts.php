@@ -2,7 +2,9 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use NumericField;
+
+use SilverStripe\Forms\NumericField;
+
 
 
 class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel

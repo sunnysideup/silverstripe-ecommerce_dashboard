@@ -2,9 +2,13 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use DropdownField;
-use EcommerceCurrency;
-use DBField;
+
+
+
+use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\ORM\FieldType\DBField;
+
 
 
 class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
@@ -12,7 +16,7 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
     private static $icon = "ecommerce_dashboard/images/icons/EcommerceDashboardPanel_OrderCount.png";
 
     private static $has_one = array(
-        'EcommerceCurrency' => 'EcommerceCurrency'
+        'EcommerceCurrency' => EcommerceCurrency::class
     );
 
     public function getLabelPrefix()

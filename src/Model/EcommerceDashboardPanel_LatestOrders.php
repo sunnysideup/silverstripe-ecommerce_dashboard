@@ -2,10 +2,15 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use NumericField;
-use EcommerceCurrency;
-use SS_Map;
-use DropdownField;
+
+
+
+
+use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\ORM\Map;
+use SilverStripe\Forms\DropdownField;
+
 
 
 class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
@@ -31,7 +36,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
     );
 
     private static $has_one = array(
-        'EcommerceCurrency' => 'EcommerceCurrency'
+        'EcommerceCurrency' => EcommerceCurrency::class
     );
 
     private static $defaults = array(
@@ -68,7 +73,7 @@ class EcommerceDashboardPanel_LatestOrders extends EcommerceDashboardPanel
             )
         );
         $map = EcommerceCurrency::get()->map();
-        if ($map instanceof SS_Map) {
+        if ($map instanceof Map) {
             $fields->replaceField(
                 'DaysBack',
                 DropdownField::create(

@@ -2,9 +2,13 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use HiddenField;
-use OrderStep;
-use Order;
+
+
+
+use SilverStripe\Forms\HiddenField;
+use Sunnysideup\Ecommerce\Model\Process\OrderStep;
+use Sunnysideup\Ecommerce\Model\Order;
+
 
 
 class EcommerceDashboardPanel_OrderStep extends EcommerceDashboardPanel

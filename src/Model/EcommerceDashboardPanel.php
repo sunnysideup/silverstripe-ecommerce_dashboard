@@ -3,15 +3,27 @@
 namespace Sunnysideup\EcommerceDashboard\Model;
 
 use DashboardPanel;
-use NumericField;
-use ReadonlyField;
-use DataObject;
-use Order;
-use EcommerceConfig;
-use OrderStep;
-use Injector;
-use EcommerceRole;
-use Config;
+
+
+
+
+
+
+
+
+
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\ReadonlyField;
+use Sunnysideup\Ecommerce\Model\Process\OrderStep;
+use SilverStripe\ORM\DataObject;
+use Sunnysideup\Ecommerce\Model\Order;
+use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
+use Sunnysideup\Ecommerce\Config\EcommerceConfig;
+use SilverStripe\Core\Injector\Injector;
+use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
+use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
+use SilverStripe\Core\Config\Config;
+
 
 
 class EcommerceDashboardPanel extends DashboardPanel
@@ -103,9 +115,9 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function openOrders($numberOfDaysBack = 7)
     {
-        $firstStep = DataObject::get_one('OrderStep');
+        $firstStep = DataObject::get_one(OrderStep::class);
         $orders = Order::get()
-            ->LeftJoin('OrderStatusLog', '"Order"."ID" = "OrderStatusLog"."OrderID"')
+            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
             ->filter(array('StatusID' => $firstStep->ID))
             ->exclude(array('MemberID' => $this->excludedMembers()));
@@ -135,10 +147,10 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function archivedOrders($numberOfDaysBack = 0)
     {
-        $submittedOrderStatusLogClassName = EcommerceConfig::get('OrderStatusLog', 'order_status_log_class_used_for_submitting_order');
+        $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
         $lastStep = OrderStep::last_order_step();
         return Order::get()
-            ->LeftJoin('OrderStatusLog', '"Order"."ID" = "OrderStatusLog"."OrderID"')
+            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
             ->filter(array('StatusID' => $lastStep->ID))
             ->exclude(array('MemberID' => $this->excludedMembersArray()))
@@ -155,7 +167,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     public function getDashboard()
     {
-        return Injector::inst()->get("EcommerceDashboard");
+        return Injector::inst()->get(EcommerceDashboard::class);
     }
 
     /**

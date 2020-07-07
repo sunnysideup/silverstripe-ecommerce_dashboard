@@ -2,8 +2,12 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use NumericField;
-use EcommerceSearchHistoryFormField;
+
+
+use SilverStripe\Forms\NumericField;
+use Sunnysideup\Ecommerce\Model\Search\SearchHistory;
+use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
+
 
 
 
@@ -56,7 +60,7 @@ class EcommerceDashboardPanel_SearchHistory extends EcommerceDashboardPanel
 
     public function Content()
     {
-        $field = EcommerceSearchHistoryFormField::create('SearchHistory', 'Search Favourites')
+        $field = EcommerceSearchHistoryFormField::create(SearchHistory::class, 'Search Favourites')
             ->setNumberOfDays($this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'])
             ->setMaxRows(($this->MaxRows ? $this->MaxRows : $this->Config()->defaults['MaxRows']))
             ->setShowMoreLink(false)
