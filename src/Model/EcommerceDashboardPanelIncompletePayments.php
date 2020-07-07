@@ -2,17 +2,13 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-
 use Sunnysideup\Ecommerce\Model\Money\EcommercePayment;
 
-
-
-
-class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
+class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
 {
-    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_IncompletePayments.png";
+    private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_IncompletePayments.png';
 
-    private static $table_name = 'EcommerceDashboardPanel_IncompletePayments';
+    private static $table_name = 'EcommerceDashboardPanelIncompletePayments';
 
     public function getLabelPrefix()
     {
@@ -21,9 +17,7 @@ class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
 
     public function getConfiguration()
     {
-        $fields = parent::getConfiguration();
-
-        return $fields;
+        return parent::getConfiguration();
     }
 
     public function Content()
@@ -35,30 +29,26 @@ class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
 
         $daysBack = 9999;
         $data = $this->calculateOnDaysback($daysBack);
-        $html .= $this->formatContentSection($daysBack, $data);
-
-        return $html;
+        return $html . $this->formatContentSection($daysBack, $data);
     }
 
     protected function calculateOnDaysback($daysBack)
     {
         $allPayments = EcommercePayment::get()
-            ->where('"EcommercePayment"."LastEdited" > ( NOW() - INTERVAL '.($daysBack).' DAY )');
+            ->where('"EcommercePayment"."LastEdited" > ( NOW() - INTERVAL ' . $daysBack . ' DAY )');
         $list = $allPayments->column('Status');
         $total = count($list);
         $totals = [];
         foreach ($list as $status) {
-            if (!isset($totals[$status])) {
+            if (! isset($totals[$status])) {
                 $totals[$status] = 0;
             }
             $totals[$status]++;
         }
-        $data = [
+        return [
             'Total' => $total,
-            'Totals' => $totals
+            'Totals' => $totals,
         ];
-
-        return $data;
     }
 
     protected function formatContentSection($daysBack, $data)
@@ -66,17 +56,16 @@ class EcommerceDashboardPanel_IncompletePayments extends EcommerceDashboardPanel
         if ($daysBack > 1000) {
             $html = '<h4 style="padding-top: 30px; clear: both;">From the beginning of time:</h4>';
         } else {
-            $html = '<h4>Last '.$daysBack.' days:</h4>';
+            $html = '<h4>Last ' . $daysBack . ' days:</h4>';
         }
         $html .= '<dl>';
         foreach ($data['Totals'] as $name => $count) {
             $percentage = round($count / $data['Total'], 2) * 100;
             $html .= '
-            <dt>'.$name.'</dt>
-            <dd>'.$count.' × = '.$percentage.'%</dd>';
+            <dt>' . $name . '</dt>
+            <dd>' . $count . ' × = ' . $percentage . '%</dd>';
         }
 
         return $html;
     }
 }
-

@@ -2,44 +2,38 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-
-
-
-use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\FieldType\DBField;
+use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
-
-
-class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
+class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
 {
-    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_OrderCount.png";
+    private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_OrderCount.png';
 
-    private static $table_name = 'EcommerceDashboardPanel_OrderCount';
+    private static $table_name = 'EcommerceDashboardPanelOrderCount';
 
-    private static $has_one = array(
-        'EcommerceCurrency' => EcommerceCurrency::class
-    );
+    private static $has_one = [
+        'EcommerceCurrency' => EcommerceCurrency::class,
+    ];
 
     public function getLabelPrefix()
     {
         $currencyStatement = '';
         if ($currency = $this->EcommerceCurrency()) {
             if ($currency->exists()) {
-                $currencyStatement = ", in ".$currency->Code.', ';
+                $currencyStatement = ', in ' . $currency->Code . ', ';
             }
         }
-        return 'Orders Placed'.$currencyStatement;
+        return 'Orders Placed' . $currencyStatement;
     }
-
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
         $fields->push(
             DropdownField::create(
-                "EcommerceCurrencyID",
-                "Currency",
+                'EcommerceCurrencyID',
+                'Currency',
                 EcommerceCurrency::get()->map()
             )
         );
@@ -50,7 +44,7 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
     public function Content()
     {
         $submittedOrders = $this->submittedOrders();
-        $submittedOrders = $submittedOrders->filter(array('CurrencyUsedID' => $this->EcommerceCurrencyID));
+        $submittedOrders = $submittedOrders->filter(['CurrencyUsedID' => $this->EcommerceCurrencyID]);
         $count = $submittedOrders->count();
         $sum = 0;
         $itemCount = 0;
@@ -58,7 +52,7 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
             <dl>';
         $html .= '
                 <dt>Count of orders</dt>
-                <dd>'.$count.'</dd>';
+                <dd>' . $count . '</dd>';
         if ($count < $this->maxOrdersForLoop() && $count > 0) {
             foreach ($submittedOrders as $order) {
                 $sum += $order->getSubTotal();
@@ -67,32 +61,30 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
             $sumDBField = DBField::create_field('Currency', $sum);
             $html .= '
                     <dt>Sum of sub-totals</dt>
-                    <dd>'.$sumDBField->Nice().'</dd>';
-            $averagePerOrder =  ($sum / $count);
+                    <dd>' . $sumDBField->Nice() . '</dd>';
+            $averagePerOrder = $sum / $count;
             $averagePerOrderDBField = DBField::create_field('Currency', $averagePerOrder);
             $html .= '
                     <dt>Average sub-total per order</dt>
-                    <dd>'.$averagePerOrderDBField->Nice().'</dd>';
+                    <dd>' . $averagePerOrderDBField->Nice() . '</dd>';
             $html .= '
                     <dt>Total count of items sold</dt>
-                    <dd>'.$itemCount.'</dd>';
+                    <dd>' . $itemCount . '</dd>';
             $itemCountPerOrder = round($itemCount / $count, 3);
             $html .= '
                     <dt>Average items sold per order</dt>
-                    <dd>'.$itemCountPerOrder.'</dd>';
+                    <dd>' . $itemCountPerOrder . '</dd>';
             $costPerItem = $sum / $itemCount;
             $costPerItemDBField = DBField::create_field('Currency', $costPerItem);
             $html .= '
                     <dt>Average cost per item</dt>
-                    <dd>'.$costPerItemDBField->Nice().'</dd>';
+                    <dd>' . $costPerItemDBField->Nice() . '</dd>';
         } elseif ($count >= $this->maxOrdersForLoop()) {
             $html .= '
                     <dt>Sum of sub-totals</dt>
                     <dd>Please reduce the number of orders to calculate the total.</dd>';
-        } else {
-            //..
         }
-
+        //..
 
         $html .= '
             </dl>';
@@ -100,4 +92,3 @@ class EcommerceDashboardPanel_OrderCount extends EcommerceDashboardPanel
         return $html;
     }
 }
-

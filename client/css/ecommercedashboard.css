@@ -53,20 +53,20 @@
 
 
 /**** INDIVIDUAL PANELS */
-.dashboard-panel-list .EcommerceDashboardPanel_LatestOrders .dashboard-panel-header {background-color: #880E4F!important;}
-.dashboard-panel-list .EcommerceDashboardPanel_LatestOrders .dashboard-panel-footer {background-color: #FCE4EC!important;}
+.dashboard-panel-list .EcommerceDashboardPanelLatestOrders .dashboard-panel-header {background-color: #880E4F!important;}
+.dashboard-panel-list .EcommerceDashboardPanelLatestOrders .dashboard-panel-footer {background-color: #FCE4EC!important;}
 
-.dashboard-panel-list .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-header {background-color: #E65100!important;}
-.dashboard-panel-list .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-footer {background-color: #FFF3E0!important;}
+.dashboard-panel-list .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-header {background-color: #E65100!important;}
+.dashboard-panel-list .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-footer {background-color: #FFF3E0!important;}
 
-.dashboard-panel-list .EcommerceDashboardPanel_OrderCount .dashboard-panel-header {background-color: #3E2723!important;}
-.dashboard-panel-list .EcommerceDashboardPanel_OrderCount .dashboard-panel-footer {background-color: #EFEBE9!important;}
+.dashboard-panel-list .EcommerceDashboardPanelOrderCount .dashboard-panel-header {background-color: #3E2723!important;}
+.dashboard-panel-list .EcommerceDashboardPanelOrderCount .dashboard-panel-footer {background-color: #EFEBE9!important;}
 
-.dashboard-panel-list .EcommerceDashboardPanel_OrderStep .dashboard-panel-header {background-color: #004D40!important;}
-.dashboard-panel-list .EcommerceDashboardPanel_OrderStep .dashboard-panel-footer {background-color: #E0F2F1!important;}
+.dashboard-panel-list .EcommerceDashboardPanelOrderStep .dashboard-panel-header {background-color: #004D40!important;}
+.dashboard-panel-list .EcommerceDashboardPanelOrderStep .dashboard-panel-footer {background-color: #E0F2F1!important;}
 
-.dashboard-panel-list .EcommerceDashboardPanel_SearchHistory .dashboard-panel-header {background-color: #0D47A1!important;}
-.dashboard-panel-list .EcommerceDashboardPanel_SearchHistory .dashboard-panel-footer {background-color: #E3F2FD!important;}
+.dashboard-panel-list .EcommerceDashboardPanelSearchHistory .dashboard-panel-header {background-color: #0D47A1!important;}
+.dashboard-panel-list .EcommerceDashboardPanelSearchHistory .dashboard-panel-footer {background-color: #E3F2FD!important;}
 
 
 /*** SELECTION OF ITEMS ***/
@@ -123,23 +123,23 @@ border-bottom: 1px solid #eee!important;
 }
 
 /*** SEARCH HISTORY ***/
-.cms .EcommerceDashboardPanel_SearchHistory .dashboard-panel-content h3 {font-size: 12px; font-weight: normal;}
+.cms .EcommerceDashboardPanelSearchHistory .dashboard-panel-content h3 {font-size: 12px; font-weight: normal;}
 
 
 
 /*** FAVOURITES ***/
-.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li {padding: 10px; clear: left;}
-.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span {float: left; display: block; width: 3em;color: #FB8C00;}
-.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li span strong{font-size: 1.5em; }
-.cms .EcommerceDashboardPanel_FavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important; margin-left: 3.5em; display: block; }
+.cms .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-content li {padding: 10px; clear: left;}
+.cms .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-content li span {float: left; display: block; width: 3em;color: #FB8C00;}
+.cms .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-content li span strong{font-size: 1.5em; }
+.cms .EcommerceDashboardPanelFavouriteProducts .dashboard-panel-content li a {display: inline; padding: 0!important; margin-left: 3.5em; display: block; }
 
 
 
 /*** ORDER STEPS ***/
-.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li strong {display: block; float:left;}
-.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li span {display: block; float: right}
-.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content em {display: none; clear: both;}
-.cms .EcommerceDashboardPanel_OrderStep .dashboard-panel-content li:hover em {display: block;}
+.cms .EcommerceDashboardPanelOrderStep .dashboard-panel-content li strong {display: block; float:left;}
+.cms .EcommerceDashboardPanelOrderStep .dashboard-panel-content li span {display: block; float: right}
+.cms .EcommerceDashboardPanelOrderStep .dashboard-panel-content em {display: none; clear: both;}
+.cms .EcommerceDashboardPanelOrderStep .dashboard-panel-content li:hover em {display: block;}
 
 
 

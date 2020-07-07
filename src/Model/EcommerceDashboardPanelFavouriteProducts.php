@@ -2,23 +2,21 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-
 use SilverStripe\Forms\NumericField;
-use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
 
-class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
+class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
 {
-    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_FavouriteProducts.png";
+    private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_FavouriteProducts.png';
 
-    private static $table_name = 'EcommerceDashboardPanel_FavouriteProducts';
+    private static $table_name = 'EcommerceDashboardPanelFavouriteProducts';
 
-    private static $db = array(
-        'NumberOfProducts' => 'Int'
-    );
+    private static $db = [
+        'NumberOfProducts' => 'Int',
+    ];
 
-    private static $defaults = array(
-        'NumberOfProducts' => 7
-    );
+    private static $defaults = [
+        'NumberOfProducts' => 7,
+    ];
 
     public function getLabelPrefix()
     {
@@ -47,7 +45,7 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
         if ($count < $this->maxOrdersForLoop() && $count > 0) {
             foreach ($submittedOrders as $order) {
                 foreach ($order->Items() as $item) {
-                    $key = $item->BuyableClassName.".".$item->BuyableID;
+                    $key = $item->BuyableClassName . '.' . $item->BuyableID;
                     if (! isset($buyableArray[$key])) {
                         $buyableArray[$key] = 0;
                     }
@@ -62,9 +60,9 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
 
                     $buyable = $className::get()->byID($id);
                     if ($buyable) {
-                        $html .= '<li class="pos'.$i.'"><span><strong>'.$count.'</strong> × </span><a href="'.$buyable->Link().'">'.$buyable->FullName.'</a></li>';
+                        $html .= '<li class="pos' . $i . '"><span><strong>' . $count . '</strong> × </span><a href="' . $buyable->Link() . '">' . $buyable->FullName . '</a></li>';
                     } else {
-                        $html .= '<li class="pos'.$i.'">Error with '.$key.'</li>';
+                        $html .= '<li class="pos' . $i . '">Error with ' . $key . '</li>';
                     }
                 }
             }
@@ -76,11 +74,9 @@ class EcommerceDashboardPanel_FavouriteProducts extends EcommerceDashboardPanel
                     <li>There are no favourite sellers.</li>';
         }
 
-
         $html .= '
             </ul>';
 
         return $html;
     }
 }
-

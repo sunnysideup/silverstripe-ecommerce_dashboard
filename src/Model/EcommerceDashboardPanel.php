@@ -3,22 +3,22 @@
 namespace Sunnysideup\EcommerceDashboard\Model;
 
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
-use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use SilverStripe\ORM\DataObject;
+use Sunnysideup\Ecommerce\Config\EcommerceConfig;
+use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
 use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
-use Sunnysideup\Ecommerce\Config\EcommerceConfig;
-use SilverStripe\Core\Injector\Injector;
+use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
-use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
-use SilverStripe\Core\Config\Config;
 use UncleCheese\Dashboard\DashboardPanel;
 
 class EcommerceDashboardPanel extends DashboardPanel
 {
-
+    protected $template = 'Dashboard_Content';
 
     /**
      * @var bool Show the configure form after creating. Used for panels that require
@@ -28,18 +28,20 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     private static $table_name = 'EcommerceDashboardPanel';
 
-    private static $db = array(
-        'DaysBack' => 'Int'
-    );
+    private static $db = [
+        'DaysBack' => 'Int',
+    ];
 
-    private static $defaults = array(
-        'DaysBack' => 7
-    );
+    private static $defaults = [
+        'DaysBack' => 7,
+    ];
 
-    protected $template = 'Dashboard_Content';
+    private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons';
 
-
-    private static $icon = "sunnysideup/ecommerce_dashboard: client/images/icons";
+    /**
+     * @var array
+     */
+    private static $_excluded_members_array = [];
 
     public function getLabel()
     {
@@ -50,76 +52,24 @@ class EcommerceDashboardPanel extends DashboardPanel
     {
         $str = $this->getLabelPrefix();
         if ($this->DaysBack) {
-            $str .= ' '.sprintf(_t('EcommerceDashboardPanel.IN_THE_LAST_XXX_DAYS', 'in the last %s days.'), $this->DaysBack);
+            $str .= ' ' . sprintf(_t('EcommerceDashboardPanel.IN_THE_LAST_XXX_DAYS', 'in the last %s days.'), $this->DaysBack);
         }
         return $str;
     }
 
     public function getLabelPrefix()
     {
-        return 'please set in '. ClassInfo::shortName($this->ClassName);
+        return 'please set in ' . ClassInfo::shortName($this->ClassName);
     }
 
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
-        $fields->push(NumericField::create("DaysBack", "Number of days back"));
+        $fields->push(NumericField::create('DaysBack', 'Number of days back'));
         $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 
         return $fields;
     }
-
-    /**
-     *
-     *
-     * @return DataList
-     */
-    protected function openOrders($numberOfDaysBack = 7)
-    {
-        $firstStep = DataObject::get_one(OrderStep::class);
-        $orders = Order::get()
-            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
-            ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
-            ->filter(array('StatusID' => $firstStep->ID))
-            ->exclude(array('MemberID' => $this->excludedMembers()));
-
-        return $orders;
-    }
-
-    /**
-     *
-     *
-     * @return DataList
-     */
-    protected function submittedOrders($numberOfDaysBack = 0)
-    {
-        $orders = Order::get_datalist_of_orders_with_submit_record();
-        $orders = $orders
-            ->exclude(array('MemberID' => $this->excludedMembersArray()))
-            ->where($this->daysBackWhereStatement($numberOfDaysBack));
-
-        return $orders;
-    }
-
-    /**
-     *
-     *
-     * @return DataList
-     */
-    protected function archivedOrders($numberOfDaysBack = 0)
-    {
-        $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
-        $lastStep = OrderStep::last_order_step();
-        return Order::get()
-            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
-            ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "'.$submittedOrderStatusLogClassName.'"."ID"')
-            ->filter(array('StatusID' => $lastStep->ID))
-            ->exclude(array('MemberID' => $this->excludedMembersArray()))
-            ->where($this->daysBackWhereStatement($numberOfDaysBack));
-        return $orders;
-    }
-
-
 
     /**
      * An accessor to the Dashboard controller
@@ -129,52 +79,6 @@ class EcommerceDashboardPanel extends DashboardPanel
     public function getDashboard()
     {
         return Injector::inst()->get(EcommerceDashboard::class);
-    }
-
-    /**
-     *
-     *
-     * @var array
-     */
-    private static $_excluded_members_array = [];
-
-    /**
-     *
-     *
-     * @return array array of member IDs
-     */
-    protected function excludedMembersArray()
-    {
-        if (! count(self::$_excluded_members_array)) {
-            self::$_excluded_members_array = array(-1 => -1);
-            $adminGroup = EcommerceRole::get_admin_group();
-            $assitantGroup = EcommerceRole::get_assistant_group();
-            if ($adminGroup) {
-                foreach ($adminGroup->Members() as $member) {
-                    self::$_excluded_members_array[$member->ID] = $member->ID;
-                }
-            }
-            if ($assitantGroup) {
-                foreach ($assitantGroup->Members() as $member) {
-                    self::$_excluded_members_array[$member->ID] = $member->ID;
-                }
-            }
-        }
-
-        return self::$_excluded_members_array;
-    }
-
-    /**
-     *
-     *
-     * @return string where statement for orders that have been submitted.
-     */
-    protected function daysBackWhereStatement($daysBack = 0)
-    {
-        if (! $daysBack) {
-            $daysBack = $this->DaysBack ? $this->DaysBack : $this->Config()->defaults['DaysBack'];
-        }
-        return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL '.($daysBack).' DAY )';
     }
 
     /**
@@ -195,7 +99,6 @@ class EcommerceDashboardPanel extends DashboardPanel
         return 500;
     }
 
-
     /**
      * Allows the panel to be added
      *
@@ -207,15 +110,89 @@ class EcommerceDashboardPanel extends DashboardPanel
         if (is_bool($enabled)) {
             return self::config()->enabled;
         }
-        if (strtolower(self::config()->enabled) == 'no') {
+        if (strtolower(self::config()->enabled) === 'no') {
             return false;
         }
         return true;
     }
 
+    /**
+     * @return DataList
+     */
+    protected function openOrders($numberOfDaysBack = 7)
+    {
+        $firstStep = DataObject::get_one(OrderStep::class);
+        return Order::get()
+            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
+            ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "' . $submittedOrderStatusLogClassName . '"."ID"')
+            ->filter(['StatusID' => $firstStep->ID])
+            ->exclude(['MemberID' => $this->excludedMembers()]);
+    }
+
+    /**
+     * @return DataList
+     */
+    protected function submittedOrders($numberOfDaysBack = 0)
+    {
+        $orders = Order::get_datalist_of_orders_with_submit_record();
+        return $orders
+            ->exclude(['MemberID' => $this->excludedMembersArray()])
+            ->where($this->daysBackWhereStatement($numberOfDaysBack));
+    }
+
+    /**
+     * @return DataList
+     */
+    protected function archivedOrders($numberOfDaysBack = 0)
+    {
+        $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
+        $lastStep = OrderStep::last_order_step();
+        return Order::get()
+            ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
+            ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "' . $submittedOrderStatusLogClassName . '"."ID"')
+            ->filter(['StatusID' => $lastStep->ID])
+            ->exclude(['MemberID' => $this->excludedMembersArray()])
+            ->where($this->daysBackWhereStatement($numberOfDaysBack));
+        return $orders;
+    }
+
+    /**
+     * @return array array of member IDs
+     */
+    protected function excludedMembersArray()
+    {
+        if (! count(self::$_excluded_members_array)) {
+            self::$_excluded_members_array = [-1 => -1];
+            $adminGroup = EcommerceRole::get_admin_group();
+            $assitantGroup = EcommerceRole::get_assistant_group();
+            if ($adminGroup) {
+                foreach ($adminGroup->Members() as $member) {
+                    self::$_excluded_members_array[$member->ID] = $member->ID;
+                }
+            }
+            if ($assitantGroup) {
+                foreach ($assitantGroup->Members() as $member) {
+                    self::$_excluded_members_array[$member->ID] = $member->ID;
+                }
+            }
+        }
+
+        return self::$_excluded_members_array;
+    }
+
+    /**
+     * @return string where statement for orders that have been submitted.
+     */
+    protected function daysBackWhereStatement($daysBack = 0)
+    {
+        if (! $daysBack) {
+            $daysBack = $this->DaysBack ?: $this->Config()->defaults['DaysBack'];
+        }
+        return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL ' . $daysBack . ' DAY )';
+    }
+
     protected function CalculatedDaysBack()
     {
-        return $this->DaysBack ? : 7;
+        return $this->DaysBack ?: 7;
     }
 }
-

@@ -2,21 +2,21 @@
 
 namespace Sunnysideup\EcommerceDashboard;
 
-use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
 use SilverStripe\ORM\ArrayList;
+use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
 use UncleCheese\Dashboard\Dashboard;
 
 class EcommerceDashboard extends Dashboard
 {
-    private static $menu_title = "Dashboard";
+    private static $menu_title = 'Dashboard';
 
-    private static $url_segment = "ecom-dashboard";
+    private static $url_segment = 'ecom-dashboard';
 
     private static $menu_priority = 100;
 
     private static $url_priority = 30;
 
-    private static $menu_icon = "sunnysideup/dashboardmods: client/images/dashboard.png";
+    private static $menu_icon = 'sunnysideup/dashboardmods: client/images/dashboard.png';
 
     private static $tree_class = EcommerceDashboardPanel::class;
 
@@ -42,4 +42,3 @@ class EcommerceDashboard extends Dashboard
         return $al;
     }
 }
-
