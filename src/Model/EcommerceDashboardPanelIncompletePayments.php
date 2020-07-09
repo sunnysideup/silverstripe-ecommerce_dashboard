@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Money\EcommercePayment;
 
 class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
@@ -29,7 +30,11 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
 
         $daysBack = 9999;
         $data = $this->calculateOnDaysback($daysBack);
-        return $html . $this->formatContentSection($daysBack, $data);
+        $html = $html . $this->formatContentSection($daysBack, $data);
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 
     protected function calculateOnDaysback($daysBack)
@@ -66,6 +71,9 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
             <dd>' . $count . ' × = ' . $percentage . '%</dd>';
         }
 
-        return $html;
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 }

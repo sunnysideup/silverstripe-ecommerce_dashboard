@@ -89,6 +89,9 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
         $html .= '
             </dl>';
 
-        return $html;
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 }

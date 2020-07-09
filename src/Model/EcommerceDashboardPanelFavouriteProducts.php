@@ -3,6 +3,7 @@
 namespace Sunnysideup\EcommerceDashboard\Model;
 
 use SilverStripe\Forms\NumericField;
+use SilverStripe\ORM\FieldType\DBField;
 
 class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
 {
@@ -77,6 +78,9 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
         $html .= '
             </ul>';
 
-        return $html;
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 }

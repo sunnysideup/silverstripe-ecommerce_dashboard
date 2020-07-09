@@ -4,6 +4,7 @@ namespace Sunnysideup\EcommerceDashboard\Model;
 
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Map;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
@@ -88,7 +89,10 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         $html .= '
             </ul>';
 
-        return $html;
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 
     public function onBeforeWrite()

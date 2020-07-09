@@ -3,6 +3,7 @@
 namespace Sunnysideup\EcommerceDashboard\Model;
 
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 
@@ -43,7 +44,11 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
             $html .= '<li>All orders have been archived</li>';
         }
         $html .= '<ul>';
-        return $html;
+
+        return DBField::create_field(
+            'HTMLText',
+            $html
+        );
     }
 
     public function onBeforeWrite()
