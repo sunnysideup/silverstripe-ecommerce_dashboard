@@ -30,7 +30,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
 
         $daysBack = 9999;
         $data = $this->calculateOnDaysback($daysBack);
-        $html = $html . $this->formatContentSection($daysBack, $data);
+        $html .= $this->formatContentSection($daysBack, $data);
         return DBField::create_field(
             'HTMLText',
             $html
