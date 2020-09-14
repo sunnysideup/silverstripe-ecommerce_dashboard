@@ -1,0 +1,16 @@
+{
+  "name": "ecommerce_dashboard",
+  "version": "1.0.0",
+  "description": "additional formatting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node-sass scss/main.scss > ../css/ecommercedashboard.css -watch",
+    "build": "node-sass scss/main.scss > ../css/ecommercedashboard.css --output-style compressed -x"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
