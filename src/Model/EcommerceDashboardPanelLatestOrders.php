@@ -7,6 +7,7 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Map;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
+use Sunnysideup\Ecommerce\Forms\Fields\YesNoDropDownField;
 
 class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
 {
@@ -53,7 +54,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
                 DropdownField::create(
                     'EcommerceCurrencyID',
                     'Currency',
-                    [0 => '-- any --'] + EcommerceCurrency::get()->map()->toArray()
+                    [0 => YesNoDropDownField::ANY_IE_NO_SELECTION] + EcommerceCurrency::get()->map()->toArray()
                 )
             );
         }
