@@ -6,8 +6,8 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Map;
-use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 use Sunnysideup\Ecommerce\Forms\Fields\YesNoDropDownField;
+use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
 class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
 {
