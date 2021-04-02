@@ -96,7 +96,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         );
     }
 
-    public function onBeforeWrite()
+    protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
         $this->DaysBack = 0;

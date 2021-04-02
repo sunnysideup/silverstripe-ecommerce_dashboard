@@ -24,11 +24,6 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
         return 'Favourite sellers';
     }
 
-    public function getTitle()
-    {
-        return parent::getTitle();
-    }
-
     public function getConfiguration()
     {
         $fields = parent::getConfiguration();
@@ -50,11 +45,11 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
                     if (! isset($buyableArray[$key])) {
                         $buyableArray[$key] = 0;
                     }
-                    $buyableArray[$key]++;
+                    ++$buyableArray[$key];
                 }
             }
             arsort($buyableArray, SORT_NUMERIC);
-            for ($i = 0; $i < $this->NumberOfProducts; $i++) {
+            for ($i = 0; $i < $this->NumberOfProducts; ++$i) {
                 $oneRow = array_slice($buyableArray, $i, 1);
                 foreach ($oneRow as $key => $count) {
                     list($className, $id) = explode('.', $key);

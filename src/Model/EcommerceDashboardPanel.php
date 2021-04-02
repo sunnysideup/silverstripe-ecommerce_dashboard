@@ -110,10 +110,7 @@ class EcommerceDashboardPanel extends DashboardPanel
         if (is_bool($enabled)) {
             return self::config()->enabled;
         }
-        if (strtolower(self::config()->enabled) === 'no') {
-            return false;
-        }
-        return true;
+        return strtolower(self::config()->enabled) !== 'no';
     }
 
     /**
@@ -153,7 +150,6 @@ class EcommerceDashboardPanel extends DashboardPanel
             ->filter(['StatusID' => $lastStep->ID])
             ->exclude(['MemberID' => $this->excludedMembersArray()])
             ->where($this->daysBackWhereStatement($numberOfDaysBack));
-        return $orders;
     }
 
     /**

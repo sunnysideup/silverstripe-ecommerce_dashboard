@@ -27,13 +27,15 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
 
     public function Content()
     {
-        $html = '';
         $orderSteps = OrderStep::get()->limit(OrderStep::get()->count() - 1);
         $html = '<ul>';
         $done = false;
         foreach ($orderSteps as $orderStep) {
             $count = Order::get()
-                ->filter(['StatusID' => $orderStep->ID, 'CancelledByID' => 0])
+                ->filter([
+                    'StatusID' => $orderStep->ID,
+                    'CancelledByID' => 0,
+                ])
                 ->count();
             if ($count > 0) {
                 $done = true;
@@ -51,7 +53,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
         );
     }
 
-    public function onBeforeWrite()
+    protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
         $this->DaysBack = 0;

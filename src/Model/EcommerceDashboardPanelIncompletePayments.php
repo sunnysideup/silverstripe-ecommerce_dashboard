@@ -16,11 +16,6 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
         return 'Incomplete payments';
     }
 
-    public function getConfiguration()
-    {
-        return parent::getConfiguration();
-    }
-
     public function Content()
     {
         $html = '';
@@ -48,7 +43,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
             if (! isset($totals[$status])) {
                 $totals[$status] = 0;
             }
-            $totals[$status]++;
+            ++$totals[$status];
         }
         return [
             'Total' => $total,

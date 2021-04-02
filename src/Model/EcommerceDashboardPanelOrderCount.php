@@ -45,6 +45,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
     {
         $submittedOrders = $this->submittedOrders();
         $submittedOrders = $submittedOrders->filter(['CurrencyUsedID' => $this->EcommerceCurrencyID]);
+
         $count = $submittedOrders->count();
         $sum = 0;
         $itemCount = 0;
