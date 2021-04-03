@@ -26,6 +26,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
         $daysBack = 9999;
         $data = $this->calculateOnDaysback($daysBack);
         $html .= $this->formatContentSection($daysBack, $data);
+
         return DBField::create_field(
             'HTMLText',
             $html
@@ -35,7 +36,8 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
     protected function calculateOnDaysback($daysBack)
     {
         $allPayments = EcommercePayment::get()
-            ->where('"EcommercePayment"."LastEdited" > ( NOW() - INTERVAL ' . $daysBack . ' DAY )');
+            ->where('"EcommercePayment"."LastEdited" > ( NOW() - INTERVAL ' . $daysBack . ' DAY )')
+        ;
         $list = $allPayments->column('Status');
         $total = count($list);
         $totals = [];
@@ -45,6 +47,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
             }
             ++$totals[$status];
         }
+
         return [
             'Total' => $total,
             'Totals' => $totals,

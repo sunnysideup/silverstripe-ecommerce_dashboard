@@ -12,7 +12,7 @@ use SilverStripe\ORM\DB;
  * @package: ecommerce
  * @sub-package: tasks
  * @inspiration: Silverstripe Ltd, Jeremy
- **/
+ */
 class EcommerceTaskDashboardReset extends BuildTask
 {
     protected $title = 'Reset all dashboard settings';

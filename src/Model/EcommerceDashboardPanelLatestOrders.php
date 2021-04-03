@@ -35,6 +35,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
                 $currencyStatement = ', in ' . $currency->Code . '.';
             }
         }
+
         return 'Last ' . ($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']) . ' Orders' . $currencyStatement;
     }
 
@@ -58,6 +59,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
                 )
             );
         }
+
         return $fields;
     }
 
@@ -66,11 +68,13 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         $submittedOrders = $this->submittedOrders(365);
         if ($this->EcommerceCurrencyID) {
             $submittedOrders = $submittedOrders
-                ->filter(['CurrencyUsedID' => $this->EcommerceCurrencyID]);
+                ->filter(['CurrencyUsedID' => $this->EcommerceCurrencyID])
+            ;
         }
         $submittedOrders = $submittedOrders->sort(['LastEdited' => 'DESC']);
         $submittedOrders = $submittedOrders
-            ->limit(($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']));
+            ->limit(($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']))
+        ;
         $html = '
             <ul>';
         if ($submittedOrders->count()) {

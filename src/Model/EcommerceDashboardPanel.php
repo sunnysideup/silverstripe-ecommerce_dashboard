@@ -23,7 +23,7 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     /**
      * @var bool Show the configure form after creating. Used for panels that require
-     * configuration in order to show data
+     *           configuration in order to show data
      */
     private static $configure_on_create = true;
 
@@ -55,6 +55,7 @@ class EcommerceDashboardPanel extends DashboardPanel
         if ($this->DaysBack) {
             $str .= ' ' . sprintf(_t('EcommerceDashboardPanel.IN_THE_LAST_XXX_DAYS', 'in the last %s days.'), $this->DaysBack);
         }
+
         return $str;
     }
 
@@ -73,7 +74,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     }
 
     /**
-     * An accessor to the Dashboard controller
+     * An accessor to the Dashboard controller.
      *
      * @return EcommerceDashboard
      */
@@ -84,14 +85,12 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     /**
      * @var int The "weight" of the dashboard panel when listed in the available panels.
-     *			Higher is lower in the list.
+     *          Higher is lower in the list.
      */
     //private static $priority = 100;
 
-
-
     /**
-     * @var string The name of the template used for the contents of this panel.
+     * @var string the name of the template used for the contents of this panel
      */
     //protected $template;
 
@@ -101,7 +100,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     }
 
     /**
-     * Allows the panel to be added
+     * Allows the panel to be added.
      *
      * @return string
      */
@@ -111,47 +110,60 @@ class EcommerceDashboardPanel extends DashboardPanel
         if (is_bool($enabled)) {
             return self::config()->enabled;
         }
-        return strtolower(self::config()->enabled) !== 'no';
+
+        return 'no' !== strtolower(self::config()->enabled);
     }
 
     /**
+     * @param mixed $numberOfDaysBack
+     *
      * @return DataList
      */
     protected function openOrders($numberOfDaysBack = 7)
     {
         $firstStep = DataObject::get_one(OrderStep::class);
         $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
+
         return Order::get()
             ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "' . $submittedOrderStatusLogClassName . '"."ID"')
             ->filter(['StatusID' => $firstStep->ID])
-            ->exclude(['MemberID' => $this->excludedMembers()]);
+            ->exclude(['MemberID' => $this->excludedMembers()])
+        ;
     }
 
     /**
+     * @param mixed $numberOfDaysBack
+     *
      * @return DataList
      */
     protected function submittedOrders($numberOfDaysBack = 0)
     {
         $orders = Order::get_datalist_of_orders_with_submit_record();
+
         return $orders
             ->exclude(['MemberID' => $this->excludedMembersArray()])
-            ->where($this->daysBackWhereStatement($numberOfDaysBack));
+            ->where($this->daysBackWhereStatement($numberOfDaysBack))
+        ;
     }
 
     /**
+     * @param mixed $numberOfDaysBack
+     *
      * @return DataList
      */
     protected function archivedOrders($numberOfDaysBack = 0)
     {
         $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
         $lastStep = OrderStep::last_order_step();
+
         return Order::get()
             ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "' . $submittedOrderStatusLogClassName . '"."ID"')
             ->filter(['StatusID' => $lastStep->ID])
             ->exclude(['MemberID' => $this->excludedMembersArray()])
-            ->where($this->daysBackWhereStatement($numberOfDaysBack));
+            ->where($this->daysBackWhereStatement($numberOfDaysBack))
+        ;
     }
 
     /**
@@ -179,13 +191,16 @@ class EcommerceDashboardPanel extends DashboardPanel
     }
 
     /**
-     * @return string where statement for orders that have been submitted.
+     * @param mixed $daysBack
+     *
+     * @return string where statement for orders that have been submitted
      */
     protected function daysBackWhereStatement($daysBack = 0)
     {
         if (! $daysBack) {
             $daysBack = $this->DaysBack ?: $this->Config()->defaults['DaysBack'];
         }
+
         return '"OrderStatusLog"."Created" > ( NOW() - INTERVAL ' . $daysBack . ' DAY )';
     }
 

@@ -28,6 +28,7 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
     {
         $fields = parent::getConfiguration();
         $fields->push(NumericField::create('NumberOfProducts', 'Number of products to show'));
+
         return $fields;
     }
 

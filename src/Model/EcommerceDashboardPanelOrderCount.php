@@ -24,6 +24,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
                 $currencyStatement = ', in ' . $currency->Code . ', ';
             }
         }
+
         return 'Orders Placed' . $currencyStatement;
     }
 

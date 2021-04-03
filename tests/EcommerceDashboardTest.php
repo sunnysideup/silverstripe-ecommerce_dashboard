@@ -2,6 +2,10 @@
 
 use SilverStripe\Dev\SapphireTest;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class EcommerceDashboardTest extends SapphireTest
 {
     protected $usesDatabase = false;

@@ -29,6 +29,7 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
     {
         $fields = parent::getConfiguration();
         $fields->push(NumericField::create('MaxRows', 'Maximum number of entries'));
+
         return $fields;
     }
 
@@ -39,7 +40,9 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
             ->setMaxRows(($this->MaxRows ?: $this->Config()->defaults['MaxRows']))
             ->setShowMoreLink(false)
             ->setAddTitle(false)
-            ->setAddAtoZ(false);
+            ->setAddAtoZ(false)
+        ;
+
         return $field->Field();
     }
 }

@@ -22,6 +22,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
     {
         $fields = parent::getConfiguration();
         $fields->replaceField('DaysBack', HiddenField::create('DaysBack', 'DaysBack'));
+
         return $fields;
     }
 
@@ -36,13 +37,14 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
                     'StatusID' => $orderStep->ID,
                     'CancelledByID' => 0,
                 ])
-                ->count();
+                ->count()
+            ;
             if ($count > 0) {
                 $done = true;
                 $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span><em>' . $orderStep->Description . '</em></li>';
             }
         }
-        if ($done === false) {
+        if (false === $done) {
             $html .= '<li>All orders have been archived</li>';
         }
         $html .= '<ul>';

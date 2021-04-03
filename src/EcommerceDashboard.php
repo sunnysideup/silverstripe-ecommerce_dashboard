@@ -22,7 +22,7 @@ class EcommerceDashboard extends Dashboard
 
     /**
      * Gets all the available panels that can be installed on the dashboard. All subclasses of
-     * {@link DashboardPanel} are included
+     * {@link DashboardPanel} are included.
      *
      * @return ArrayList
      */
@@ -33,12 +33,13 @@ class EcommerceDashboard extends Dashboard
         foreach ($panels as $panel) {
             if ($panel instanceof EcommerceDashboardPanel) {
                 if ($panel->registered()) {
-                    if ($panel->ClassName !== EcommerceDashboardPanel::class) {
+                    if (EcommerceDashboardPanel::class !== $panel->ClassName) {
                         $al->push($panel);
                     }
                 }
             }
         }
+
         return $al;
     }
 }
