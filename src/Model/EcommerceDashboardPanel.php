@@ -15,6 +15,7 @@ use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
 use UncleCheese\Dashboard\DashboardPanel;
+use SilverStripe\ORM\DataList;
 
 class EcommerceDashboardPanel extends DashboardPanel
 {
@@ -74,7 +75,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     /**
      * An accessor to the Dashboard controller
      *
-     * @return Dashboard
+     * @return EcommerceDashboard
      */
     public function getDashboard()
     {
@@ -119,6 +120,7 @@ class EcommerceDashboardPanel extends DashboardPanel
     protected function openOrders($numberOfDaysBack = 7)
     {
         $firstStep = DataObject::get_one(OrderStep::class);
+        $submittedOrderStatusLogClassName = EcommerceConfig::get(OrderStatusLog::class, 'order_status_log_class_used_for_submitting_order');
         return Order::get()
             ->LeftJoin(OrderStatusLog::class, '"Order"."ID" = "OrderStatusLog"."OrderID"')
             ->LeftJoin($submittedOrderStatusLogClassName, '"OrderStatusLog"."ID" = "' . $submittedOrderStatusLogClassName . '"."ID"')
