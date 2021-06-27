@@ -77,7 +77,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         ;
         $html = '
             <ul>';
-        if ($submittedOrders->count()) {
+        if ($submittedOrders->exists()) {
             foreach ($submittedOrders as $order) {
                 $html .= '
                 <li>
