@@ -28,7 +28,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
 
     public function Content()
     {
-        $orderSteps = OrderStep::get()->limit(OrderStep::get()->count() - 1);
+        $orderSteps = OrderStep::get()->limit(99999);
         $html = '<ul>';
         $done = false;
         foreach ($orderSteps as $orderStep) {
