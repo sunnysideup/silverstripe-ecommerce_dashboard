@@ -30,7 +30,8 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
     public function getLabelPrefix()
     {
         $currencyStatement = '';
-        if ($currency = $this->EcommerceCurrency()) {
+        $currency = $this->EcommerceCurrency();
+        if ($currency) {
             if ($currency->exists()) {
                 $currencyStatement = ', in ' . $currency->Code . '.';
             }
