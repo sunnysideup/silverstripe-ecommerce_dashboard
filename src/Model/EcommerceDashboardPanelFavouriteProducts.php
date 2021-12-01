@@ -55,7 +55,7 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
                 foreach ($oneRow as $key => $count) {
                     list($className, $id) = explode('.', $key);
 
-                    $buyable = $className::get()->byID($id);
+                    $buyable = $className::get_by_id($id);
                     if ($buyable) {
                         $html .= '<li class="pos' . $i . '"><span><strong>' . $count . '</strong> × </span><a href="' . $buyable->Link() . '">' . $buyable->FullName . '</a></li>';
                     } else {
