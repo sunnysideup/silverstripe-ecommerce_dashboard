@@ -35,7 +35,7 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
 
     public function Content()
     {
-        $field = EcommerceSearchHistoryFormField::create(SearchHistory::class, 'Search Favourites')
+        $field = EcommerceSearchHistoryFormField::create('SearchFavourites', 'Search Favourites')
             ->setNumberOfDays($this->DaysBack ?: $this->Config()->defaults['DaysBack'])
             ->setMaxRows(($this->MaxRows ?: $this->Config()->defaults['MaxRows']))
             ->setShowMoreLink(false)
