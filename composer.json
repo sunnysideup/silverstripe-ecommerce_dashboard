@@ -22,7 +22,7 @@
   ],
   "require": {
     "sunnysideup/ecommerce": "*",
-    "unclecheese/dashboard": "*",
+    "i-lateral/silverstripe-dashboard": "*",
     "sunnysideup/dashboardmods": "*",
     "silverstripe/recipe-cms": "^4.4"
   },
