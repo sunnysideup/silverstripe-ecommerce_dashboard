@@ -3,6 +3,7 @@
 namespace Sunnysideup\EcommerceDashboard\Model;
 
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\Map;
@@ -40,7 +41,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         return 'Last ' . ($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']) . ' Orders' . $currencyStatement;
     }
 
-    public function getConfigurationFields()
+    public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
         $fields->push(

@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
 use Sunnysideup\Ecommerce\Model\Search\SearchHistory;
@@ -25,7 +26,7 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
         return 'Top Searches';
     }
 
-    public function getConfigurationFields()
+    public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
         $fields->push(NumericField::create('MaxRows', 'Maximum number of entries'));

@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 
@@ -24,7 +25,7 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
         return 'Favourite sellers';
     }
 
-    public function getConfigurationFields()
+    public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
         $fields->push(NumericField::create('NumberOfProducts', 'Number of products to show'));

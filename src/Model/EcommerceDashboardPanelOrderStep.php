@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Order;
@@ -18,7 +19,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
         return 'Order Journey';
     }
 
-    public function getConfigurationFields()
+    public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
         $fields->replaceField('DaysBack', HiddenField::create('DaysBack', 'DaysBack'));
