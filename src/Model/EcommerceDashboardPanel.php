@@ -5,6 +5,7 @@ namespace Sunnysideup\EcommerceDashboard\Model;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataList;
@@ -15,7 +16,7 @@ use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
-use UncleCheese\Dashboard\DashboardPanel;
+use ilateral\SilverStripe\Dashboard\Panels\DashboardPanel;
 
 class EcommerceDashboardPanel extends DashboardPanel
 {
@@ -44,7 +45,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     private static $_excluded_members_array = [];
 
-    public function getLabel()
+    public function getLabel() : string
     {
         return $this->getLabelPrefix();
     }
@@ -64,9 +65,9 @@ class EcommerceDashboardPanel extends DashboardPanel
         return 'please set in ' . ClassInfo::shortName($this->ClassName);
     }
 
-    public function getConfiguration()
+    public function getConfigurationFieldsFields(): FieldList
     {
-        $fields = parent::getConfiguration();
+        $fields = parent::getConfigurationFieldsFields();
         $fields->push(NumericField::create('DaysBack', 'Number of days back'));
         $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 

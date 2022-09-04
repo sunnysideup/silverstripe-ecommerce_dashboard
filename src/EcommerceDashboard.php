@@ -4,7 +4,7 @@ namespace Sunnysideup\EcommerceDashboard;
 
 use SilverStripe\ORM\ArrayList;
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
-use UncleCheese\Dashboard\Dashboard;
+use ilateral\SilverStripe\Dashboard\Dashboard;
 
 class EcommerceDashboard extends Dashboard
 {

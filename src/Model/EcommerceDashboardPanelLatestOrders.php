@@ -40,9 +40,9 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         return 'Last ' . ($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']) . ' Orders' . $currencyStatement;
     }
 
-    public function getConfiguration()
+    public function getConfigurationFields()
     {
-        $fields = parent::getConfiguration();
+        $fields = parent::getConfigurationFields();
         $fields->push(
             NumericField::create(
                 'NumberOfOrdersToShow',

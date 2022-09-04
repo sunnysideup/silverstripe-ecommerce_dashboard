@@ -18,9 +18,9 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
         return 'Order Journey';
     }
 
-    public function getConfiguration()
+    public function getConfigurationFields()
     {
-        $fields = parent::getConfiguration();
+        $fields = parent::getConfigurationFields();
         $fields->replaceField('DaysBack', HiddenField::create('DaysBack', 'DaysBack'));
 
         return $fields;
@@ -42,7 +42,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
             ;
             if ($count > 0) {
                 $done = true;
-                $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span><em>' . $orderStep->Description . '</em></li>';
+                $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span> <em>' . $orderStep->Description . '</em></li>';
             }
         }
         if (false === $done) {

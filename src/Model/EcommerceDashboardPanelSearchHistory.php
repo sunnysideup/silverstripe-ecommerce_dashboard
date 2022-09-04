@@ -25,9 +25,9 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
         return 'Top Searches';
     }
 
-    public function getConfiguration()
+    public function getConfigurationFields()
     {
-        $fields = parent::getConfiguration();
+        $fields = parent::getConfigurationFields();
         $fields->push(NumericField::create('MaxRows', 'Maximum number of entries'));
 
         return $fields;

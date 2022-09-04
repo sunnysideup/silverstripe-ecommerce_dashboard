@@ -29,9 +29,9 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
         return 'Orders Placed' . $currencyStatement;
     }
 
-    public function getConfiguration()
+    public function getConfigurationFields()
     {
-        $fields = parent::getConfiguration();
+        $fields = parent::getConfigurationFields();
         $fields->push(
             DropdownField::create(
                 'EcommerceCurrencyID',
