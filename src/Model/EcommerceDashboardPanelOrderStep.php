@@ -43,7 +43,7 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
             ;
             if ($count > 0) {
                 $done = true;
-                $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span> <em>' . $orderStep->Description . '</em></li>';
+                $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span><br /><em>' . $orderStep->Description . '</em></li>';
             }
         }
         if (false === $done) {
