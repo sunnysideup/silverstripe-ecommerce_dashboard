@@ -67,7 +67,7 @@ class EcommerceDashboardPanel extends DashboardPanel
 
     public function getConfigurationFields(): FieldList
     {
-        $fields = $this->getConfigurationFields();
+        $fields = parent::getConfigurationFields();
         $fields->push(NumericField::create('DaysBack', 'Number of days back'));
         $fields->replaceField('Title', ReadonlyField::create('Title', ''));
 
