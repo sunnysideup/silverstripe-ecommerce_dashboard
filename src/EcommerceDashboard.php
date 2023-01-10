@@ -26,9 +26,9 @@ class EcommerceDashboard extends Dashboard
      *
      * @return ArrayList
      */
-    public function AllPanels()
+    public function getAvailablePanels(): ArrayList
     {
-        $panels = parent::AllPanels();
+        $panels = parent::getAvailablePanels();
         $al = ArrayList::create();
         foreach ($panels as $panel) {
             if ($panel instanceof EcommerceDashboardPanel) {
