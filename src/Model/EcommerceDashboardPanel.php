@@ -84,18 +84,7 @@ class EcommerceDashboardPanel extends DashboardPanel
         return Injector::inst()->get(EcommerceDashboard::class);
     }
 
-    /**
-     * @var int The "weight" of the dashboard panel when listed in the available panels.
-     *          Higher is lower in the list.
-     */
-    //private static $priority = 100;
-
-    /**
-     * @var string the name of the template used for the contents of this panel
-     */
-    //protected $template;
-
-    public function maxOrdersForLoop()
+    public function maxOrdersForLoop() : int
     {
         return 500;
     }
