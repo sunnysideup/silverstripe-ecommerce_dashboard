@@ -5,7 +5,6 @@ namespace Sunnysideup\EcommerceDashboard\Model;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
-use Sunnysideup\Ecommerce\Model\Search\SearchHistory;
 
 class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
 {

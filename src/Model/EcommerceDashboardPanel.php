@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use ilateral\SilverStripe\Dashboard\Panels\DashboardPanel;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
@@ -16,7 +17,6 @@ use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
-use ilateral\SilverStripe\Dashboard\Panels\DashboardPanel;
 
 class EcommerceDashboardPanel extends DashboardPanel
 {
@@ -45,7 +45,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     private static $_excluded_members_array = [];
 
-    public function getLabel() : string
+    public function getLabel(): string
     {
         return $this->getLabelPrefix();
     }
@@ -84,7 +84,7 @@ class EcommerceDashboardPanel extends DashboardPanel
         return Injector::inst()->get(EcommerceDashboard::class);
     }
 
-    public function maxOrdersForLoop() : int
+    public function maxOrdersForLoop(): int
     {
         return 500;
     }

@@ -2,8 +2,8 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
@@ -30,7 +30,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
         return 'Orders Placed' . $currencyStatement;
     }
 
-    public function getConfigurationFields() : FieldList
+    public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
         $fields->push(

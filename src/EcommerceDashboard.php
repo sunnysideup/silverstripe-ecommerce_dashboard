@@ -2,9 +2,9 @@
 
 namespace Sunnysideup\EcommerceDashboard;
 
+use ilateral\SilverStripe\Dashboard\Dashboard;
 use SilverStripe\ORM\ArrayList;
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
-use ilateral\SilverStripe\Dashboard\Dashboard;
 
 class EcommerceDashboard extends Dashboard
 {
@@ -23,8 +23,6 @@ class EcommerceDashboard extends Dashboard
     /**
      * Gets all the available panels that can be installed on the dashboard. All subclasses of
      * {@link DashboardPanel} are included.
-     *
-     * @return ArrayList
      */
     public function getAvailablePanels(): ArrayList
     {
