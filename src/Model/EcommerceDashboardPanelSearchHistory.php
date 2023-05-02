@@ -6,6 +6,11 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelSearchHistory
+ *
+ * @property int $MaxRows
+ */
 class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
 {
     private static $table_name = 'EcommerceDashboardPanelSearchHistory';

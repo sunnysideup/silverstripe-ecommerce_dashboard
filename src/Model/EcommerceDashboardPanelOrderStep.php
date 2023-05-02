@@ -8,6 +8,10 @@ use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelOrderStep
+ *
+ */
 class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
 {
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_OrderStep.png';

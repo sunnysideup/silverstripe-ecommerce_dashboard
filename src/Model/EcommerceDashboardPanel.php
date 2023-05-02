@@ -18,6 +18,11 @@ use Sunnysideup\Ecommerce\Model\Process\OrderStatusLog;
 use Sunnysideup\Ecommerce\Model\Process\OrderStep;
 use Sunnysideup\EcommerceDashboard\EcommerceDashboard;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel
+ *
+ * @property int $DaysBack
+ */
 class EcommerceDashboardPanel extends DashboardPanel
 {
     protected $template = 'Dashboard_Content';

@@ -6,6 +6,11 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelFavouriteProducts
+ *
+ * @property int $NumberOfProducts
+ */
 class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
 {
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_FavouriteProducts.png';

@@ -5,6 +5,10 @@ namespace Sunnysideup\EcommerceDashboard\Model;
 use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Money\EcommercePayment;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelIncompletePayments
+ *
+ */
 class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
 {
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_IncompletePayments.png';

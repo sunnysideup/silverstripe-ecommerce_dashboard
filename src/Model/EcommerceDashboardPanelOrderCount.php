@@ -7,6 +7,12 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelOrderCount
+ *
+ * @property int $EcommerceCurrencyID
+ * @method \Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency EcommerceCurrency()
+ */
 class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
 {
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_OrderCount.png';

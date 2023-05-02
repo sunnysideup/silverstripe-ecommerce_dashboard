@@ -10,6 +10,13 @@ use SilverStripe\ORM\Map;
 use Sunnysideup\Ecommerce\Forms\Fields\YesNoDropDownField;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
+/**
+ * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelLatestOrders
+ *
+ * @property int $NumberOfOrdersToShow
+ * @property int $EcommerceCurrencyID
+ * @method \Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency EcommerceCurrency()
+ */
 class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
 {
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_LatestOrders.png';
