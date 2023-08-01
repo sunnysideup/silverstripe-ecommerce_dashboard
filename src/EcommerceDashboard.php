@@ -2,7 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard;
 
-use ilateral\SilverStripe\Dashboard\Dashboard;
+use Sunnysideup\Dashboard\Dashboard;
 use SilverStripe\ORM\ArrayList;
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
 
