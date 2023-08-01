@@ -22,7 +22,7 @@
   ],
   "require": {
     "sunnysideup/ecommerce": "*",
-    "i-lateral/silverstripe-dashboard": "*",
+    "sunnysideup/silverstripe-dashboard": "*",
     "sunnysideup/dashboardmods": "*",
     "silverstripe/recipe-cms": "^4.0 || ^5.0"
   },
