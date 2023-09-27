@@ -10,9 +10,6 @@ SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'sunnysideup/ecommerce_dashboard: client/css/ecommercedashboard.css'
 
-SilverStripe\Admin\AdminRootController:
-  default_panel: SilverStripe\CMS\Controllers\CMSMain
-
 Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole:
   admin_role_permission_codes:
     - CMS_ACCESS_Dashboard
