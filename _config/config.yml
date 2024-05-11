@@ -16,11 +16,11 @@ Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole:
     - CMS_ACCESS_DashboardAddPanels
     - CMS_ACCESS_DashboardConfigurePanels
     - CMS_ACCESS_DashboardDeletePanels
----
-Only:
-  moduleexists: 'grouped-cms-menu'
----
-SilverStripe\Admin\LeftAndMain:
-  menu_groups:
-    Shop:
-      - Sunnysideup\EcommerceDashboard\EcommerceDashboard
+# ---
+# Only:
+#   moduleexists: 'grouped-cms-menu'
+# ---
+# SilverStripe\Admin\LeftAndMain:
+#   menu_groups:
+#     Shop:
+#       - Sunnysideup\EcommerceDashboard\EcommerceDashboard
