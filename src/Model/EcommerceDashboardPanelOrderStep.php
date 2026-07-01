@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HiddenField;
 use SilverStripe\ORM\FieldType\DBField;
@@ -17,11 +18,13 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
 
     private static $table_name = 'EcommerceDashboardPanelOrderStep';
 
+    #[Override]
     public function getLabelPrefix()
     {
         return 'Order Journey';
     }
 
+    #[Override]
     public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
@@ -49,9 +52,11 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
                 $html .= '<li><strong>' . $orderStep->Title . '</strong>: <span>' . $count . '</span><br /><em>' . $orderStep->Description . '</em></li>';
             }
         }
+
         if (false === $done) {
             $html .= '<li>All orders have been archived</li>';
         }
+
         $html .= '<ul>';
 
         return DBField::create_field(
@@ -62,7 +67,6 @@ class EcommerceDashboardPanelOrderStep extends EcommerceDashboardPanel
 
     protected function onBeforeWrite()
     {
-        parent::onBeforeWrite();
         $this->DaysBack = 0;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use Sunnysideup\Ecommerce\Forms\Fields\EcommerceSearchHistoryFormField;
@@ -25,11 +26,13 @@ class EcommerceDashboardPanelSearchHistory extends EcommerceDashboardPanel
 
     private static $icon = 'sunnysideup/ecommerce_dashboard: client/images/icons/EcommerceDashboardPanel_SearchHistory.png';
 
+    #[Override]
     public function getLabelPrefix()
     {
         return 'Top Searches';
     }
 
+    #[Override]
     public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();

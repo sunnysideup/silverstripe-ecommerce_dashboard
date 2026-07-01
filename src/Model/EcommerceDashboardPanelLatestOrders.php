@@ -2,11 +2,12 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
+use SilverStripe\Model\List\Map;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\Map;
 use Sunnysideup\Ecommerce\Forms\Fields\YesNoDropDownField;
 use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
 
@@ -15,7 +16,7 @@ use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
  *
  * @property int $NumberOfOrdersToShow
  * @property int $EcommerceCurrencyID
- * @method \Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency EcommerceCurrency()
+ * @method EcommerceCurrency EcommerceCurrency()
  */
 class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
 {
@@ -35,6 +36,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         'NumberOfOrdersToShow' => 7,
     ];
 
+    #[Override]
     public function getLabelPrefix()
     {
         $currencyStatement = '';
@@ -46,6 +48,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
         return 'Last ' . ($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']) . ' Orders' . $currencyStatement;
     }
 
+    #[Override]
     public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
@@ -78,6 +81,7 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
                 ->filter(['CurrencyUsedID' => $this->EcommerceCurrencyID])
             ;
         }
+
         $submittedOrders = $submittedOrders->sort(['LastEdited' => 'DESC']);
         $submittedOrders = $submittedOrders
             ->limit(($this->NumberOfOrdersToShow ?: $this->Config()->defaults['NumberOfOrdersToShow']))
@@ -109,7 +113,6 @@ class EcommerceDashboardPanelLatestOrders extends EcommerceDashboardPanel
 
     protected function onBeforeWrite()
     {
-        parent::onBeforeWrite();
         $this->DaysBack = 0;
     }
 }

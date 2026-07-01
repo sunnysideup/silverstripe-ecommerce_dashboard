@@ -9,7 +9,6 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\DataObject;
 use Sunnysideup\Dashboard\Panels\DashboardPanel;
 use Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole;
 use Sunnysideup\Ecommerce\Model\Order;
@@ -31,6 +30,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      *           configuration in order to show data
      */
     private static bool $configure_on_create = true;
+
     private static int $max_orders_for_looping = 500;
 
 
@@ -117,7 +117,7 @@ class EcommerceDashboardPanel extends DashboardPanel
      */
     protected function openOrders($numberOfDaysBack = 7)
     {
-        $firstStep = DataObject::get_one(OrderStep::class);
+        $firstStep = OrderStep::get()->setUseCache(true)->first();
 
         return Order::get()
             ->filter(['StatusID' => $firstStep->ID])

@@ -1,4 +1,5 @@
-SilverStripe\ORM\DatabaseAdmin:
+
+SilverStripe\Dev\DbBuild:
   classname_value_remapping:
     EcommerceTaskDashboardReset: Sunnysideup\EcommerceDashboard\Tasks\EcommerceTaskDashboardReset
     EcommerceDashboardPanel_FavouriteProducts: Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelFavouriteProducts

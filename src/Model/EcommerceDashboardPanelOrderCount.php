@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\FieldType\DBField;
@@ -11,7 +12,7 @@ use Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency;
  * Class \Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanelOrderCount
  *
  * @property int $EcommerceCurrencyID
- * @method \Sunnysideup\Ecommerce\Model\Money\EcommerceCurrency EcommerceCurrency()
+ * @method EcommerceCurrency EcommerceCurrency()
  */
 class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
 {
@@ -23,6 +24,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
         'EcommerceCurrency' => EcommerceCurrency::class,
     ];
 
+    #[Override]
     public function getLabelPrefix()
     {
         $currencyStatement = '';
@@ -34,6 +36,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
         return 'Orders Placed' . $currencyStatement;
     }
 
+    #[Override]
     public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
@@ -66,6 +69,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
                 $sum += $order->getSubTotal();
                 $itemCount += $order->getTotalItemsTimesQuantity();
             }
+
             $sumDBField = DBField::create_field('Currency', $sum);
             $html .= '
                     <tr><td>Sum of sub-totals</td>
@@ -92,6 +96,7 @@ class EcommerceDashboardPanelOrderCount extends EcommerceDashboardPanel
                     <tr><td>Sum of sub-totals</td>
                     <td>Please reduce the number of orders to calculate the total.</td></tr>';
         }
+
         //..
 
         $html .= '

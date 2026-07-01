@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sunnysideup\EcommerceDashboard\Tasks;
 
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\ORM\DB;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Adds all members, who have bought something, to the customer group.
@@ -15,9 +20,11 @@ use SilverStripe\ORM\DB;
  */
 class EcommerceTaskDashboardReset extends BuildTask
 {
-    protected $title = 'Reset all dashboard settings';
+    protected string $title = 'Reset all dashboard settings';
 
-    protected $description = 'Resets all data set for the dashboard customisation.  There is NO undo!';
+    private static $segment = 'ecommerce-dashboard-reset';
+
+    protected static string $description = 'Resets all data set for the dashboard customisation.  There is NO undo!';
 
     protected $tables = [
         'DashboardBlogEntryPanel',
@@ -39,12 +46,14 @@ class EcommerceTaskDashboardReset extends BuildTask
         'EcommerceDashboardPanelSearchHistory',
     ];
 
-    public function run($request)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         foreach ($this->tables as $table) {
-            DB::alteration_message('deleting ' . $table, 'deleted');
+            $output->writeln('deleting ' . $table);
             DB::query('DELETE FROM ' . $table . ';');
         }
-        DB::alteration_message('------------------ END ------------------');
+
+        $output->writeln('------------------ END ------------------');
+        return Command::SUCCESS;
     }
 }

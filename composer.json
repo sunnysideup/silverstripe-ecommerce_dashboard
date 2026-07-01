@@ -1,42 +1,52 @@
 {
-  "name": "sunnysideup/ecommerce_dashboard",
-  "type": "silverstripe-vendormodule",
-  "description": "Adds a dash board to the silverstripe e-commerce application",
-  "keywords": [
-    "Silverstripe-CMS",
-    "CMS",
-    "Silverstripe",
-    "e-commerce",
-    "e-commerce dashboard",
-    "sales",
-    "dashboard",
-    "statistics",
-    "sales",
-    "management summary"
-  ],
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Nicolaas Francken",
-      "email": "modules@sunnysideup.co.nz",
-      "role": "lead developer"
+    "name": "sunnysideup/ecommerce_dashboard",
+    "type": "silverstripe-vendormodule",
+    "description": "Adds a dash board to the silverstripe e-commerce application",
+    "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "e-commerce",
+        "e-commerce dashboard",
+        "sales",
+        "dashboard",
+        "statistics",
+        "sales",
+        "management summary"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "sunnysideup/ecommerce": "^33.0",
+        "silverstripe/recipe-cms": "^6.0"
+    },
+    "extra": {
+        "expose": [
+            "client/images",
+            "client/css"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\EcommerceDashboard\\": "src/"
+        }
+    },
+    "yet-to-update": {
+        "sunnysideup/dashboard": {
+            "section": "require",
+            "current": "^5.0-dev",
+            "reason": "no-compatible-stable-release"
+        },
+        "sunnysideup/dashboardmods": {
+            "section": "require",
+            "current": "^5.0-dev",
+            "reason": "no-compatible-stable-release"
+        }
     }
-  ],
-  "require": {
-    "sunnysideup/ecommerce": "5.x-dev",
-    "sunnysideup/dashboard": "5.x-dev",
-    "sunnysideup/dashboardmods": "5.x-dev",
-    "silverstripe/recipe-cms": "^4.0 || ^5.0"
-  },
-  "extra": {
-    "expose": [
-      "client/images",
-      "client/css"
-    ]
-  },
-  "autoload": {
-    "psr-4": {
-      "Sunnysideup\\EcommerceDashboard\\": "src/"
-    }
-  }
 }

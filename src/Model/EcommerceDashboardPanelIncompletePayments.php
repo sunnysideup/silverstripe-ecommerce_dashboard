@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
 use SilverStripe\ORM\FieldType\DBField;
 use Sunnysideup\Ecommerce\Model\Money\EcommercePayment;
 
@@ -14,6 +15,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
 
     private static $table_name = 'EcommerceDashboardPanelIncompletePayments';
 
+    #[Override]
     public function getLabelPrefix()
     {
         return 'Incomplete payments';
@@ -47,6 +49,7 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
             if (! isset($totals[$status])) {
                 $totals[$status] = 0;
             }
+
             ++$totals[$status];
         }
 
@@ -63,12 +66,14 @@ class EcommerceDashboardPanelIncompletePayments extends EcommerceDashboardPanel
         } else {
             $html = '<h3>Last ' . $daysBack . ' days:</h3>';
         }
+
         $html .= '<table><tbody>';
         foreach ($data['Totals'] as $name => $count) {
             $percentage = round($count / $data['Total'], 2) * 100;
             $html .= '
             <tr><td>' . $name . '</td><td class="number">' . $count . '</td><td class="number">' . $percentage . '%</td></tr>';
         }
+
         $html .= '</tbody></table>';
         return DBField::create_field(
             'HTMLText',

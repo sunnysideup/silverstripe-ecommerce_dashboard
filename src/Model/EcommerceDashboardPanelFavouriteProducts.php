@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceDashboard\Model;
 
+use Override;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\FieldType\DBField;
@@ -25,11 +26,13 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
         'NumberOfProducts' => 7,
     ];
 
+    #[Override]
     public function getLabelPrefix()
     {
         return 'Favourite sellers';
     }
 
+    #[Override]
     public function getConfigurationFields(): FieldList
     {
         $fields = parent::getConfigurationFields();
@@ -52,14 +55,16 @@ class EcommerceDashboardPanelFavouriteProducts extends EcommerceDashboardPanel
                     if (! isset($buyableArray[$key])) {
                         $buyableArray[$key] = 0;
                     }
+
                     ++$buyableArray[$key];
                 }
             }
+
             arsort($buyableArray, SORT_NUMERIC);
             for ($i = 0; $i < $this->NumberOfProducts; ++$i) {
                 $oneRow = array_slice($buyableArray, $i, 1);
                 foreach ($oneRow as $key => $count) {
-                    list($className, $id) = explode('.', $key);
+                    [$className, $id] = explode('.', $key);
 
                     $buyable = $className::get_by_id($id);
                     if ($buyable) {
