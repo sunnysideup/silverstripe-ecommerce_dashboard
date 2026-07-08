@@ -24,6 +24,8 @@
     ],
     "require": {
         "sunnysideup/ecommerce": "^33.0",
+        "sunnysideup/dashboard": "dev-main",
+        "sunnysideup/dashboardmods": "dev-main",
         "silverstripe/recipe-cms": "^6.0"
     },
     "extra": {
@@ -35,18 +37,6 @@
     "autoload": {
         "psr-4": {
             "Sunnysideup\\EcommerceDashboard\\": "src/"
-        }
-    },
-    "yet-to-update": {
-        "sunnysideup/dashboard": {
-            "section": "require",
-            "current": "^5.0-dev",
-            "reason": "no-compatible-stable-release"
-        },
-        "sunnysideup/dashboardmods": {
-            "section": "require",
-            "current": "^5.0-dev",
-            "reason": "no-compatible-stable-release"
         }
     }
 }
