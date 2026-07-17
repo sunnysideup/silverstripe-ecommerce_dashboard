@@ -16,6 +16,9 @@ Sunnysideup\Ecommerce\Model\Extensions\EcommerceRole:
     - CMS_ACCESS_DashboardAddPanels
     - CMS_ACCESS_DashboardConfigurePanels
     - CMS_ACCESS_DashboardDeletePanels
+
+Sunnysideup\Dashboard\Dashboard:
+  can_view: false
 # ---
 # Only:
 #   moduleexists: 'grouped-cms-menu'

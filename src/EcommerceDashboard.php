@@ -2,6 +2,8 @@
 
 namespace Sunnysideup\EcommerceDashboard;
 
+use SilverStripe\Security\Permission;
+use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\ORM\ArrayList;
 use Sunnysideup\Dashboard\Dashboard;
 use Sunnysideup\EcommerceDashboard\Model\EcommerceDashboardPanel;
@@ -38,5 +40,10 @@ class EcommerceDashboard extends Dashboard
         }
 
         return $al;
+    }
+
+    public function canView($member = null): bool
+    {
+        return LeftAndMain::canView($member) && Permission::check("CMS_ACCESS_Dashboard");
     }
 }
